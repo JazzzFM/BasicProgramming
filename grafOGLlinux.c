@@ -1,8 +1,10 @@
-/*
- * Profesor: Carlos Coronado
- * Materia: Programaci'on II
- *
- */
+//                      Institto Politénico Nacional.                          //
+//                 Escuela Superior de Física y Matemáticas.                    //
+//                                                                              //
+//                              Progrmación II                                  //
+//                Profesor: Luis Carlos Coronado García.                        //
+//  EQUIPO: 4  EJERCICIO 4 XD  Alumno: Flores Rodríguez Jaziel David                        //
+//
 
 #include <GL/glut.h>
 #include <math.h>

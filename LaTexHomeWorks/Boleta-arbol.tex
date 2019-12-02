@@ -1,0 +1,276 @@
+\documentclass[12pt]{article}  
+\usepackage[spanish]{babel}       
+\usepackage[letterpaper]{geometry} 
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+
+\author{Jaziel David Flores Rodríguez.}       
+\date{\today} 
+\title{Árboles.} 
+
+\begin{document}
+\maketitle
+\section{Introducción.}
+
+Intuitivamente el concepto de árbol implica una estructura en la que los datos se organizan de modo que los elementos de información están relacionados entre sí a través de ramas. Los árboles son estructuras no lineales muy utilizados en informática para representar fórmulas algebraicas, como un método eficiente para búsquedas grandes y complejas y en aplicaciones diversas tales como inteligencia artificial o algoritmos de cifrado. 
+\section{Descripción de Árbol.}
+
+Las estructuras de tipo árbol se usan para representar datos con una relación jerárquica entre sus elementos. La definición de árbol implica una \textbf{naturaleza recursiva}, ya que un árbol o es vacío o se considera formado por un nodo raíz y un conjunto disjunto de árboles que se llaman \textbf{subárboles del raíz}. \\
+
+\begin{figure}[h]
+\centering
+   \includegraphics[width=0.73\textwidth]{UNO.png}
+	\caption{Representación de árboles.}
+\end{figure}
+
+\pagebreak
+
+\subsection{Definiciones.}
+
+El concepto de árbol requiere una terminología específica, entre la que es preciso destacar la siguiente:\\
+
+• \textbf{Nodos}: son los elementos o vértices del árbol.\\
+
+• Todo árbol que no está vacío tiene un \textbf{nodo raíz}, que es aquel del cual derivan o descienden todos los demás elementos del árbol.\\ 
+
+• Cada nodo tiene un único \textbf{antecesor o ascendiente} denominado \textbf{nodo padre}, excepto el nodo raíz. \\ 
+
+• Cualquier nodo, incluido el raíz puede tener varios descendientes, denominados \textbf{ nodos hijos}, que salen de él.\\
+
+• Se llama \textbf{grado de un nodo} al número de hijos que salen de él.\\
+
+• A los nodos con grado 0 se les denomina \textbf{nodos terminales u hojas}.\\
+
+• Dos nodos hijos del mismo padre reciben el nombre de \textbf{hermanos}. \\ 
+
+• \textbf{Cada nodo} de un árbol tiene asociado un \textbf{número de nivel} que se determina por \textbf{el número de antecesores que tiene desde la raíz}, teniendo en cuenta que el nivel de la raíz es 1 o bien 0.\\
+
+• \textbf{Profundidad o altura} de un árbol es el máximo de los niveles de los nodos del árbol.\\
+
+• \textbf{Peso} de un árbol es el número de nodos terminales.\\
+
+• Una colección de dos o más árboles se llama \textbf{bosque}.\\
+
+\pagebreak
+
+\section{Descripción de Árbol Binario.}
+
+Arbol binario es aquel en el que cada nodo tiene como máximo el grado 2. Un árbol binario es equilibrado cuando la diferencia de altura entre los subárboles de cualquier nodo es como máximo una unidad. Cuando los subárboles de todos los nodos tienen todos la misma altura se dice que está perfectamente equilibrado.\\
+
+\textbf{Construcción de un Árbol binario.}\\
+
+Los árboles binarios se construyen, al igual que las listas enlazadas, utilizando una serie de elementos con la misma estructura básica. Esta estructura básica es un nodo con un espacio para el almacenamiento de datos y dos punteros que actúan como enlace con sus hijos izquierdo y derecho, estos punteros permiten que cada nodo pueda tener de cero a dos elementos sucesores o siguientes puesto que alguno de ellos o incluso ambos pueden ser NULL.\\
+
+La formación del árbol pasa por la creación de cada uno de los nodos y el establecimiento de los correspondientes enlaces de tal forma que cada nodo, excepto la raíz, tenga un único elemento predecesor y todos los nodos del árbol puedan ser accedidos a través de un puntero que referencia dicho nodo raíz.\\
+
+\textbf{Recorridos}\\
+
+Se denomina recorrido al proceso que permite acceder una sóla vez a cada uno de los nodos del árbol. Existen diversas formas de efectuar el recorrido de un árbol binario, en \textbf{anchura} y en \textbf{profundidad}.\\
+
+\textbf{Recorrido en Anchura}\\
+
+Consiste en recorrer los distintos niveles y, dentro de cada nivel, los diferentes nodos de izquierda a derecha.\\
+
+\pagebreak 
+
+\textbf{Recorrido en profundidad}:
+\begin{table}[h]
+	\centering
+	\begin{tabular}{l | l }
+		\hline
+Preorden & Visitar la raíz, recorrer en preorden el subárbol izquierdo, recorrer \\
+	& en preorden el subárbol derecho.\\ \hline
+Inorden & Recorrer inorden el subárbol izquierdo, visitar la raíz, recorrer \\ 
+	& inorden el subárbol derecho. \\ \hline
+Posorden & Recorrer en postorden el subárbol izquierdo, recorrer en postorden \\
+         & el subárbol derecho, visitar la raíz. \\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{figure}[h]
+\centering
+   \includegraphics[width=1.1\textwidth]{DOS.png}
+        \caption{Recorridos en profundidad.}
+\end{figure}
+
+Estos algoritmos tienen naturaleza recursiva basada la propia estructura recursiva de los árboles. En cualquiera de ellos recorrer el árbol implica visitar la raiz e invocarse a si mismo dos veces para efectuar el mismo tratamiento con los subárboles izquierdo y derecho. La condición de salida de la recursividad es que el árbol o subárbol considerado en un determinado momento se encuentre vacío. 
+
+\section{Descripción de Árbol binario Completo.}
+
+Árbol binario completo es un árbol equilibrado en el que todos los nodos interiores, es decir aquellos con descendientes, tienen dos hijos. Un árbol binario completo de profundidad n para cada nivel, del 0 al nivel n-1 tiene un conjunto lleno de nodos y todos los nodos hoja a nivel n ocupan las posiciones más a la izquierda del árbol. Un árbol binario completo que contiene 2 n nodos a nivel n es un árbol lleno. Un árbol binario lleno tiene todas sus hojas al mismo nivel y sus nodos interiores tienen cada uno dos hijos. Cuando un árbol binario es lleno es, necesariamente, completo. Un árbol binario completo es equilibrado, mientras que un árbol binario lleno es totalmente equilibrado.\\
+
+\section{Implementación en C.}
+\begin{tabla}
+\centering
+	\begin{tabular}{l | l }
+
+typedef int TypeElement; & void InOrder(node *p)\\
+\quad struct Node & \{\\ 
+ \quad \{  & if(p) \\
+ \hspace{2cm} TypeElement data; & \{\\ 
+\hspace{2cm} struct Node *left\_son, *right\_son;&InOrder(p $\rightarrow$ left\_son);\\
+		\quad \}; & Visit(p);\\
+ & InOrder(p $\rightarrow$ right\_son);\\
+ & \}\\		
+typedef struct Node node; & \} \\
+typedef node *BinaryTree; &  \\ 
+ & void PostOrder(node *p) \{ \\
+\quad BinaryTree CreateNode(TypeElement x) &  \quad if(p)\{\\
+\quad \{  &  PostOrder(p $\rightarrow$ left\_son);\\
+\hspace{2cm} BinaryTree T; & PostOrder(p $\rightarrow$ right\_son);\\
+\hspace{2cm} T = (BinaryTree)malloc(sizeof(node)); & Visit(p);\\
+\hspace{2cm} T $\rightarrow$ data = x; &  \} \\
+\hspace{2cm} T $\rightarrow$ right\_son = a $\rightarrow$ left\_son = NULL; & \quad \}\\
+\hspace{2cm} return T;  & \\
+\quad \} &\\
+ & \\
+void Visit(node *p) & \\
+\{ & \\
+  printf("\%d", p $\rightarrow$ data); & \\
+\} & \\
+ & \\
+void PreOrder(node *p) & \\
+\{& \\
+  if(p) & \\
+\{ & \\
+		Visit(p); & \\
+		PreOrder(p $\rightarrow$ left\_son); & \\
+		PreOrder(p $\rightarrow$ right\_son); & \\
+		\} & \\
+		\} & \\
+	\end{tabular}
+\end{table}
+
+\section{Implementación en Java.}
+\begin{table}[h]
+\centering
+	\begin{tabular}{l | l }
+public class CBinaryTree$<$T$>$ & public void InOrder(C Node r) \\
+\{ & \{ \\
+private CNode root; & if(r != null) \\
+ & \{ \\
+private class CNode & InOrder(r.left); \\
+\{ & // Operaciones a realizar \\
+// Atributos & // con el nodo referenciado r. \\
+private T data & Inorder(r.right); \\
+private CNode left; & \} \\
+private CNode right & \} \\
+// Métodos & \\
+public CNode(){} & public void PostOrder \\
+// Constructor & \{ \\  
+\} & if( r != null) \\ 
+ & \{ \\
+//Métodos del Árbol binario. &  PostOrder(r.left);\\
+public CBinaryTree(){} //Constructor & PostOrder(r.right);\\
+ & //Operaciones a realizar \\
+public void PreOrder(CNode r) & // con el nodo referenciado r. \\
+\{ & \} \\
+if( r != null) & \} \\
+// Operaciones a realizar & \} \\
+// Con el nodo referenciado r. & \\ 
+PreOrder(r.left); & \\
+PreOrder(r.right) & \\
+\} & \\
+\} & \\
+	\end{tabular}
+\end{table}
+\pagebreak
+\section{Generación de un Árbol Abstracto Sintáctico.}
+
+1-\textbf{Conversion de notacion infija a postfija}\\
+
+El siguiente algoritmo en pseudocódigo traduce una expresión en notación infija a notación postfija, como paso previo a la obtención del arbol binario correspondiente a la expresión:\\
+
+Entrada: Una lista que contiene los terminos de la expresión en notación infija (la notación habitual).\\
+Salida: Una lista que contiene los terminos de la expresión en notacion postfija.\\
+Datos locales: Una pila, que va a contener operadores y parentesis izquierdos.\\
+
+\textbf{INICIO}\\
+     Crear pila y la lista de salida, inicialmente vacias.\\
+\textbf{MIENTRAS} lista de entrada no este vacia y no se ha encontrado ningun error \textbf{HACER}\\
+\textbf{Extraer} el primer termino de la lista (lo llamaremos E)\\
+       SEGUN-SEA E\\
+	 \textbf{CASO} E es número :\\
+	   \textbf{Insertar} E al final de la lista de salida\\
+	 \textbf{CASO} E es la variable x : \\
+	  \textbf{Insertar} E al final de la lista de salida \\
+	 \textbf{CASO} E es un paréntesis izquierdo :\\
+          \textbf{Insertar} E en la pila\\
+	 \textbf{CASO} E es un paréntesis derecho : \\
+          \textbf{MIENTRAS} La pila no este vacía y \\ 
+		    su cima no sea un paréntesis izquierdo \textbf{HACER} \\
+	     \textbf{Extraer} elemento de la pila \\
+	     \textbf{Insertarlo} al final de la lista de salida\\
+	  \textbf{FIN-MIENTRAS}\\
+	   \textbf{SI} Encontramos el parentesis izquierdo \textbf{ENTONCES}\\
+	     \textbf{Extraerlo} de la pila y destruirlo\\
+	   \textbf{SINO}\\
+             Se ha detectado un ERROR 2\\
+	   \textbf{FIN-SI}\\
+           Destruir E\\
+	 \textbf{CASO} E es un operador :\\
+	   \textbf{MIENTRAS} La pila no este vacía y su cima sea un operador\\
+		    de precedencia mayor o igual que la de E \textbf{HACER}\\
+	     \textbf{Extraer} elemento de la pila\\
+	    \textbf{Insertarlo} al final de la lista de salida \\
+	  \textbf{FIN-MIENTRAS}\\
+	   \textbf{Insertar} E en la pila\\
+      \textbf{FIN-SEGUN-SEA}\\
+    \textbf{FIN-MIENTRAS}\\
+   \textbf{MIENTRAS Pila no esté vacía HACER}\\
+      \textbf{Extraer elemento de la pila}\\
+      \textbf{Insertarlo} al final de la lista de salida\\
+    \textbf{FIN-MIENTRAS}\\
+   \textbf{Destruir pila}\\
+ \textbf{FIN}
+\\
+A continuación se muestra el estado de la lista de entrada, la lista de salida y la pila en cada iteración del bucle principal del algoritmo al dar como entrada la lista de términos correspondiente a la expresión. \\
+
+2- \textbf{Traducción de notación postfija a arbol binario}.\\
+
+Entrada: La lista obtenida en el algoritmo anterior, que contiene los terminos de la expresion en notación postfija.\\
+Salida: Un arbol binario que representa la expresión.\\
+Datos locales: Una pila, que va a contener operandos (numeros, la variable x y expresiones (subarboles).\\ 
+
+\textbf{INICIO} \\
+    \textbf{Crea}r pila y arbol, inicialmente vacios.\\
+    \textbf{MIENTRAS} lista de entrada no este vacia y no se ha encontrado ningun error \textbf{HACER}\\ 
+\textbf{Extraer} el primer termino de la lista (lo llamaremos E)\\
+SEGUN-SEA E\\
+        \textbf{CASO} E es número : Insertar E en la pila \\ 
+	 \textbf{CASO} E es la variable x : Insertar E en la pila \\ 
+	 \textbf{CASO} E es una expresión (un arbol) : Insertar E en la pila \\ 
+	 \textbf{CASO} E es un paréntesis izquierdo : Se ha detectado un ERROR 2\\ 
+	 \textbf{CASO} E es un operador : \\ 
+	   \textbf{SI} La pila tiene menos de dos elementos \textbf{ENTONCES}\\
+             Se ha detectado un ERROR 3\\
+	   \textbf{SINO}\\
+	     \textbf{Extraer} elemento de la pila (lo llamaremos A2)\\
+	     \textbf{Extraer} elemento de la pila (lo llamaremos A1)\\
+	     \textbf{Crear} un arbol donde la raiz contenga al operador E,
+             el hijo izquierdo sea A1 y el hijo derecho sea A2.
+	     \textbf{Insertar} el arbol en la pila.\\
+     \textbf{FIN-SI}\\
+       \textf{FIN-SEGUN-SEA}\\
+   \textbf{FIN-MIENTRAS}
+    \textbf{SI} pila vacía o con más de un elemento \textbf{ENTONCES}
+      Se ha detectado un ERROR 3 \\
+    \textbf{SINO}\\
+      \textbf{Extraer} elemento de la pila (lo llamaremos E)\\
+      \textbf{SI} Elemento no es una expresión (un arbol) \textbf{ENTONCES}\\
+	\textbf{Convertir} E en un arbol con hijo izquierdo y derecho vacíos\\
+     \textbf{FIN-SI}\\
+      El resultado del algoritmo (el arbol de salida) es E\\
+   \textbf{FIN-SI}\\
+    {Borrado de la pila, si se ha producido error }\\
+    \textbf{MIENTRAS} pila no esté vacía \textbf{HACER}\\
+      \textbf{Extraer} elemento de la pila\\
+      \textbf{Destruir} elemento \\
+    \textbf{FIN-MIENTRAS}
+    \textbf{Destruir} pila\\
+  \textbf{FIN}\\
+
+Se muestra el estado de la lista de entrada y la pila al ejecutar el algoritmo anterior sobre la lista de terminos en notación postfija obtenidos anteriormente. Para abreviar el listado, cuando varios términos consecutivos de la lista son operandos se han agrupado las iteraciones correspondientes en una única linea. \\
+
+\end{document}
+

@@ -1,0 +1,191 @@
+%\documentclass[12pt, A4]{article}
+\documentclass[12pt ]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+
+\usepackage{listings}
+%\usepackage[letterpaper]{geometry} 
+\usepackage{graphicx}
+\usepackage[x11names,table]{xcolor}
+\usepackage[spanish, es-tabla]{babel}
+\usepackage{booktabs}
+\usepackage{longtable,multirow,booktabs}
+\renewcommand{\tablename}{Tabla}
+\usepackage{hyperref}
+\renewcommand{\refname}{Bibliograf\'ia}
+\author{Luis Donaldo Barreto Garc\'ia} 
+
+\date{\today} 
+\title{Tarea 3: Notaciones para la evaluación de expresiones aritméticas y su uso.} 
+\begin{document}
+	\maketitle
+\begin{abstract}
+	En este trabajo se presenta una descripción de las notaciones infija, prefija y postfija así como se debe evaluar una expresión en notación postfija utilizando pilas. Por ultimo se expone como pasar de la notación infija a la postfija con el uso de pilas.
+\end{abstract}
+
+
+\section{Notaciones}
+\subsection{Notación infija}
+La notación  infija es la notación común de fórmulas aritméticas y lógicas, en la cual se escriben los operadores entre los operandos en que están actuando, esto es:
+	$$ \mathtt{a} \circ \mathtt{b}$$
+
+donde $\mathtt{a}$ y $\mathtt{b}$ son los operandos y $\circ$ el operador.
+En esta notación la ventaja es la forma natural de escribir expresiones aritméticas y el inconveniente es que muchas veces se necesita de paréntesis para indicar el orden de evaluación. En la ausencia de paréntesis, ciertas reglas de prioridad determinan el orden de las operaciones.
+\subsection{Notación prefija o polaca}
+
+La notación prefija o polaca es una forma de notación para la lógica, la aritmética, el álgebra y la computación. Su característica distintiva es que coloca los operadores a la izquierda de sus operandos, es decir:
+
+$$ \circ \mathtt{a} \mathtt{b}$$
+donde nuevamente $\mathtt{a}$ y $\mathtt{b}$ son los operandos y $\circ$ el operador.\\
+Si la aridad de los operadores es fija, el resultado es una sintaxis que carece de paréntesis u otros signos de agrupación, y todavía puede ser analizada sin ambigüedad. El lógico polaco Jan Łukasiewicz inventó esta notación alrededor de 1920 para simplificar la lógica proposicional, es por ello que se le conoce como notación polaca.
+\subsection{Notación postfija o polaca inversa}
+La notación polaca inversa,  o notación posfija es un método algebraico alternativo de introducción de datos. Su nombre viene por analogía con la relacionada notación polaca.\\En la notación polaca inversa es al revés de la notación prefija: primero están los operandos y después viene el operador que va a realizar los cálculos sobre ellos
+es decir:
+
+$$  \mathtt{a} \mathtt{b}\circ$$
+donde nuevamente $\mathtt{a}$ y $\mathtt{b}$ son los operandos y $\circ$ el operador.\\
+ Tanto la notación polaca como la notación polaca inversa no necesitan usar paréntesis para indicar el orden de las operaciones, mientras la aridad del operador sea fija.\\
+ El esquema polaco inverso fue propuesto en 1954 por Burks, Warren y Wright y reinventado independientemente por Friedrich L. Bauer y Edsger Dijkstra a principios de los años 1960, para reducir el acceso de la memoria de computadora y para usar el stack (pila) para evaluar expresiones.
+ 
+ \section{Evaluación de una expresión en notación polaca inversa con la ayuda de pilas}
+ Supongamos que tenemos la expresión  $$4*(5+6-(8/2\hspace{0.2 cm}\hat{}\hspace{0.15 cm}3)-7)-1$$ la cual esta escrita en notación infija, esta misma expresión en notación postfija es la siguiente
+ $$456+823 \hspace{0.2 cm}\hat{}\hspace{0.15 cm}/-7-*1-$$
+ Mediante pilas podemos evaluar la expresión anterior como sigue
+ \begin{longtable}[h]{p{4cm} p{4cm} p{4cm}}
+ 	
+ 	\hline
+ 	
+ 	\rowcolor{LightBlue2} Carácter leído &Acción& Pila  \\
+ 	\hline\hline
+ 	\endfirsthead
+ 	
+ 	\hline
+ 	\rowcolor{LightBlue2} Carácter leído &Acción& Pila \\
+ 	\hline\hline
+ 	\endhead
+ 	
+ 	\multicolumn{3}{r}{Sigue en la siguiente pagina.}
+ 	\endfoot
+ 	
+ 	\endlastfoot
+ 	
+ 	
+ 	4 & Meter(4) & 4 \\ 
+ 	\rowcolor{gray!20}5 &Meter(5)&5, 4 \\
+ 	
+ 	
+ 	6 & Meter(6) & 6, 5, 4 \\ 
+ 	\rowcolor{gray!20}  + &Op 2 = Sacar(6)\hspace{1 cm} Op 1 = Sacar(5) \hspace{1 cm} 5 + 6 = 11 \hspace{2 cm} Meter(11) &11, 4 \\
+ 	
+ 	
+ 	8 & Meter(8) & 8, 11, 4 \\ 
+ 	\rowcolor{gray!20}2 &Meter(2)&2, 8, 11, 4 \\
+ 	
+ 	3 & Meter(3) & 3, 2, 8, 11, 4 \\ 
+ 	\rowcolor{gray!20}  $\hat{{}}$ &Op 2 = Sacar(3)\hspace{2 cm} Op 1 = Sacar(2) \hspace{3 cm} 2 $\hat{{}}$ 3 = 8 \hspace{2 cm} Meter(8) &8,  8, 11, 4\\
+ 	
+ 	  / &Op 2 = Sacar(8)\hspace{2 cm} Op 1 = Sacar(8) \hspace{3 cm} 8 / 8 = 1 \hspace{2 cm} Meter(1) &1, 11, 4\\
+ 	  
+ 	  
+ 	  \rowcolor{gray!20}  - &Op 2 = Sacar(1)\hspace{2 cm} Op 1 = Sacar(11) \hspace{3 cm}  11-1 = 10 \hspace{2 cm} Meter(10) & 10, 4\\
+ 	
+ 	
+ 	7 & Meter(7) & 7, 10, 4 \\ 
+ 	
+ 	\rowcolor{gray!20}  - &Op 2 = Sacar(7)\hspace{2 cm} Op 1 = Sacar(10) \hspace{3 cm}  10- 7= 3 \hspace{2 cm} Meter(3) & 3, 4\\
+ 	
+ 	 * &Op 2 = Sacar(3)\hspace{2 cm} Op 1 = Sacar(4) \hspace{3 cm}  4 * 3= 12 \hspace{2 cm} Meter(3) & 12\\
+ 	
+ 	
+ 	1 & Meter(1) & 1, 12 \\ 
+ 	
+ 	\rowcolor{gray!20}  - &Op 2 = Sacar(1)\hspace{2 cm} Op 1 = Sacar(12) \hspace{3 cm}  12 - 1= 11 \hspace{2 cm} Meter(11) & 11\\
+ 	
+ 	
+ 	
+ 	Fin cadena & Fin evaluación & 11 \\ 
+ 	\caption{Evaluación de un a expresión en notación postfija con ayuda de una pila}
+ \end{longtable}
+ 
+ Donde \emph{Meter} y \emph{Sacar} dependerá del lenguaje en el que se realice la implementación, en C serian funciones y en JAVA serian métodos.
+ 
+ \section{Pasar de la notación infija a la	polaca inversa mediante el uso de pilas}
+ 
+ Nuevamente  considerando la expresión  $$4*(5+6-(8/2\hspace{0.2 cm}\hat{}\hspace{0.15 cm}3)-7)-1$$ la cual esta escrita en notación infija, para pasar a notación polaca se realiza lo siguiente
+ 
+ \begin{longtable}[h]{p{2cm} p{5cm} p{2.5cm} p{2.5 cm}}
+ 	
+ 	\hline
+ 	
+ 	\rowcolor{LightBlue2} Carácter leído &Acción& Pila&Expresión postfija  \\
+ 	\hline\hline
+ 	\endfirsthead
+ 	
+ 	\hline
+ 	\rowcolor{LightBlue2} Carácter leído &Acción& Pila&Expresión postfija \\
+ 	\hline\hline
+ 	\endhead
+ 	
+ 	\multicolumn{4}{r}{Sigue en la siguiente pagina.}
+ 	\endfoot
+ 	
+ 	\endlastfoot
+ 	
+ 	
+ 	4 & Pasar a postfija & & 4 \\ 
+ 	\rowcolor{gray!20}* &Meter('*')&*& 4 \\
+ 	
+ 	(& 	PInfija(‘(‘) $>$ PPila(‘*’) $\rightarrow$ Meter(‘(‘) & (, *	& 4	\\
+ 	\rowcolor{gray!20} 5&	Pasar a postfija & (, *	& 45\\
+ 	
+ 	
+ 	
+ 	+&PInfija(‘+’) $>$ PPila(‘(‘) $\rightarrow$ Meter (‘+’) &+, (, * 	&	45 \\
+ 	\rowcolor{gray!20} &	Pasar a postfija&+, (, * 	&45\\
+ 	
+ 	
+ 	-& PInfija(‘-’) $\leq$ PPila(‘+’)
+ 	$\rightarrow$ Sacar$\rightarrow$(‘+’) y pasamos a postfija
+ 	PInfija(‘-’) $>$ PPila(‘(‘) $\rightarrow$ Meter (‘-’) 	&	-, (, * & 456+	\\
+ 	\rowcolor{gray!20}( & PInfija(‘(‘) $>$ PPila(‘-’) $\rightarrow$ Meter(‘(‘) 	&(, -, (, * 	&456+8\\
+ 	
+ 	
+ 8	&Pasar a postfija	&(, -, (, * 	&456+8	\\
+ 	\rowcolor{gray!20} /&	PInfija(‘/’) $>$ PPila(‘(‘) $\rightarrow$ Meter (‘/’) & /, (, -, (, *	&456+8\\
+ 	
+ 	
+ 2	& Pasar a postfija	& /, (, -, (, *	&456+82	\\
+ 	\rowcolor{gray!20}$\hat{{}}$ & PInfija(‘$\hat{{}}$’) $>$ PPila(‘/‘) $\rightarrow$ Meter (‘$\hat{{}}$’) 	& $\hat{{}}$ , /, (, -, (, * 	&456+82\\
+ 	
+ 	
+ 3	&Pasar a postfija	& $\hat{{}}$ , /, (, -, (, * 	&456+823	\\
+ 	\rowcolor{gray!20} ) & Pasamos los elementos de la pila a postfija hasta encontrar ‘(‘ que se elimina 	&-, (, *	&456+823\hspace{0.2 cm}$\hat{{}}$\hspace{0.2 cm} /\\
+ 	
+ 	
+ -	&PInfija(‘-’) $\leq$ PPila(‘-’)
+ 	$\rightarrow$ Sacar$\rightarrow$(‘-’) y pasamos a postfija
+ 	PInfija(‘-’) $>$ PPila(‘(‘) $\rightarrow$ Meter (‘-’) 	&- , (, * 	&456+823\hspace{0.2 cm}$\hat{{}}$\hspace{0.2 cm} /-	\\
+ 	\rowcolor{gray!20} 7& Pasar a postfija 	&- , (, * 	& 456+823\hspace{0.1 cm}$\hat{{}}$\hspace{0.1 cm} /-7\\
+ 	
+ 	
+ )	& Pasamos los elementos de la pila a postfija hasta encontrar ‘(‘ que se elimina	&*	&  456+823\hspace{0.1 cm}$\hat{{}}$\hspace{0.1 cm} /-7-	\\
+ 	\rowcolor{gray!20}- & PInfija(‘-’) $\leq$ PPila(‘*’)
+ 	$\rightarrow$ Sacar$\rightarrow$(‘*’) y pasamos a postfija
+ 	Como la pila está vacía $\rightarrow$ Meter (‘-’) 	&-	&456+823\hspace{0.1 cm}$\hat{{}}$\hspace{0.1 cm} /-7-*\\
+ 	
+ 	
+ 	1&	Pasar a postfija&-	&456+823\hspace{0.1 cm}$\hat{{}}$\hspace{0.1 cm} /-7-*1	\\
+ 	\rowcolor{gray!20} Fin entrada &  Pasamos todo lo que queda en la pila a la expresión postfija	&	& 456+823\hspace{0.1 cm}$\hat{{}}$\hspace{0.1 cm} /-7-*1-\\
+ 	
+ 	
+ 	
+ 	
+ 	\caption{Conversión de Infija a Postfija}
+ \end{longtable}
+ 
+ Donde PInfija y PPila son las prioridades de los operadores y se implementan mediante funciones.
+ 
+\end{document}

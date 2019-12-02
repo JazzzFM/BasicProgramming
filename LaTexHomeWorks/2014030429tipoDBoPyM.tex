@@ -1,0 +1,262 @@
+\documentclass[a4paper]{article}
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+
+
+\begin{abstract}
+Este documento pretende ser una guia rápida sobre la documentación de consulta para cualquier lector sobre la sintaxis básica estos dos lenguajes, inclusive ser una guia para mí mismo que ahora estoy escribiendo esto, además de ser una buena práctica del uso de LaTex en Linux usando VIM y algunos plugins para la terminal de Linux en el compilado de este.
+\end{abstract}
+
+\section{Funciones, Macros y Tipos de datos de Cabceras en C.}
+Primero la cabcera \textbf{math.h}: Funciones que sirven para realizar operaciones matemáticas comunes sobre valores de tipo double. Las siguientes funciones son matemáticas, le serán de utilidad, por ello se debe incluir la biblioteca math.h:\\
+\\
+double sin(double x); - Regresa el seno de un ángulo x en radianes. \\
+double cos(double x); - Regresa el coseno de un ángulo x en radiante. \\
+double tan(double x); - Regresa la tangente de un ángulo x en radianes.\\
+double log(double x); - Regresa el logaritmo natural de x. \\
+double exp(double x); - Regresa la exponencial de x. \\ 
+double pow(double x, double y); - Regresa x a la potencia y. \\ 
+int abs(int x); - Regresa el valor absoluto de x.\\
+double floor(double x); - Regresa el valor entero menor o igual a x. \\ 
+double sqrt(double x); - Regresa la raíz cuadrada de x. \\ 
+\\
+Sólo hay una macro en math.h llamada \textbf{HUGE\_VAL}. Esta macro es usadoa cuando el resultado de una función no puede ser reprenetado como un punto flotante. Si la magnitudde el resultado correcto es muy largo para ser representado, la función configura errno a erange para indicar un rango de error, y devuelve un particular, y muy largo alor llamado por la macro \textbf{HUGE\_VAL}. Si la magnitud del resultado es muy pequeña, un valor cero será devuelto por defecto. En este caso, errno debe o no debe configurar a erange.\\ 
+\\
+\\
+La cabecera \textbf{limits.h} determina varias propiedades de distintas tipos de datos. Las macros definidas en esta cabecera imitan elvalor de varios tipos de datos como lo son \textbf{char}, \textbf{int} y \textbf{long}. Estos limites especifican que una variabe no puede valer cuaquier valor más allá de eso límites, por ejemplo un tipo \textbd{unsigned} puede caracterizar que puede valer como máximo a 255. Los sigientes valores son una implementación específica y definidas con la directiva \#define, pero estos valore no deberían de ser cualquiera menor que lo que está dado aquí:\\ 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ c | c | c }
+		Macro &	Valor &	Descripción \\ \hline 
+		CHAR\_BIT & 8 &	Define el número de bits en un byte.  \\ \hline
+		SCHAR\_MIN & -128 & Define un valor mínimo para un caracter con signo.\\ \hline 
+		SCHAR\_MAX & +127 & Define un valor máximo para un caracter con signo. \\ \hline
+		UCHAR\_MAX & 255 & Define un valor máximo para un caracter sin signo. \\ \hline
+		CHAR\_MIN & -128 & Define un valor mínimo para un tipo carcter y su valor \\ 
+			  &      & será igual a SCHAR\_MIN si el caracter representa \\ 
+			  &      & valores negativos , de ota forma será cero.\\ \hline 
+		CHAR\_MAX & +127 & Define el valor para el tipo caracter y su valor \\ 
+			& & será igual a SCHAR\_MAX si char representa  \\ 
+			& & valores negativos, de otra forma será  UCHAR\_MAX. \\ \hline
+		MB\_LEN\_MAX & 16 & Define el máximo numero de bytes en un\\
+		            &   & caracter de bytes múltiples.\\ \hline
+		SHRT\_MIN & -32768 & Define el valor mínimo para un short int. \\ \hline
+		SHRT\_MAX & +32767 & Define el máximo valor para short int. \\ \hline 
+		USHRT\_MAX & 65535 & Define el máximo valor para un unsigned short int. \\ \hline
+		INT\_MIN & -2147483648 & Define el mínimo valor para un int. \\ \hline 
+		INT\_MAX & +2147483647 & Define un valor máximo para un int. \\ \hline
+		UINT\_MAX & 4294967295 & Define el máximo valor para un unsigned int. \\ \hline
+		LONG\_MIN & -9223372036854775808 & Define el mínimo valor para un long int. \\ \hline
+	LONG\_MAX & +9223372036854775807 & Define el máximo valor para un long int. \\ \hline
+		ULONG_MAX & 18446744073709551615 & Define el máximo valor para un unsigned long int.\\ \hline
+	\end{tabular}
+\end{table}
+\\
+\\
+La cabecera \textbf{float.h} de C del archivo de Librería Estandar contiene un conjunto de varias plataformas dependientes constantes relacionadas con valores puntos flotante. Estas constantes son propuestas por ANSI C. Ellos nos permiten hacer más portables nuestros programas. Antes de verificar todas las constantes, esbueno entender que los números punto-flotante están compuestos por los siguientes cuatro elementos. 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ c | c }
+No. & Componente y Descrición del Componente omponent & Component Description \\ \hline
+1 & S - sign ( +/- ) \\ \hline
+2 & b - base o radio de la representación exponencial, \\ 
+  & 2 para binario, 10 para decimal, 16 para hexadecimal, y así... \\ \hline
+3 & e - exponente, un entero entre un mínimo \\ 
+  & exponente emin y un maximo emax. \\ \hline
+4 & p - precisión, el número base-b digitos en el significado \\ \hline 
+	\end{tabular}
+\end{table}
+\pagebreak
+
+Los siguientes valores son un implementación especifica con la directivaa \#define, pero esos valores no deberían ser cualquiera menors que os dados aquí. Note que en todas las instancias FTL se refiere al tipo float, DBL refier a duble, y LDBL hace referencia a un long double \\ 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ c | c | l }
+No. &	Macro &   Descripcion \\ \hline
+1 & FLT\_ROUNDS & Define el modo de redondeo para la adición de punto flotante \\ 
+  &		& y puede tener cualquiera de los siguientes valores:\\ 
+  &		& -1 - indeterminable \\
+  &		& 0 - hacia cero \\ 
+  &		& 1 - al más cercano \\ 
+  &		& 2 - hacia el infinito positivo \\ 
+  &		& 3 - hacia el infinito negativo \\ \hline
+2& FLT\_RADIX 2 & Esto define la representación de la base de la base del \\
+ & & exponente. Una base-2 es binaria, la base-10 es \\ 
+ & & la representación decimal normal, la base-16 e Hex. \\ \hline
+3 & FLT\_MANT\_DIG & Estas macros definen el número de \\
+  & DBL\_MANT\_DIG & dígitos en el número (en la base FLT\_RADIX). \\
+  & LDBL\_MANT\_DIG & \\ \hline
+4 & FLT\_DIG 6 & Estas macros definen el número máximo de dígitos decimales (base-10). \\
+  & DBL\_DIG 10 & que se pueden representar sin cambios después del redondeo. \\ 
+  & LDBL\_DIG 10 & \\ \hline
+5 & FLT\_MIN\_EXP & Estas macros definen el valor entero negativo \\
+  & DBL\_MIN\_EXP & mínimo para un exponente en la base FLT\_RADIX.\\ 
+  & LDBL\_MIN\_EXP & \\\hline
+6 & FLT\_MIN\_10\_EXP -37 & Estas macros definen el valor entero \\
+  & DBL\_MIN\_10\_EXP -37 & negativo mínimo para un exponente en base 10.\\
+  & LDBL\_MIN\_10\_EXP -37 & \\ \hline 
+7 & FLT\_MAX\_EXP & Estas macros definen el valor entero máximo. \\ 
+  & DBL\_MAX\_EXP & para un exponente en la base FLT\_RADIX. \\ 
+  & LDBL\_MAX\_EXP & \\ \hline	
+8 & FLT\_MAX\_10\_EXP +37 & Estas macros definen el valor entero. &
+  & DBL\_MAX\_10\_EXP +37 & máximo para un exponente en base 10. &
+  & LDBL\_MAX\_10\_EXP +37 & \\ \hline
+9 & FLT\_MAX 1E+37 & Estas macros definen el valor máximo \\
+  & DBL\_MAX 1E+37 & de punto flotante finito \\ 
+  & LDBL\_MAX 1E+37 & \\ \hline
+10 & FLT\_EPSILON 1E-5 & Estas macros definen el dígito \\
+   & DBL\_EPSILON 1E-9 & menos significativo representable. \\
+   & LDBL\_EPSILON 1E-9 & \\ \hline
+11 & FLT\_MIN 1E-37 & Estas macros definen los valores \\
+   & DBL\_MIN 1E-37 &  mínimos de coma flotante. \\
+   & LDBL\_MIN 1E-37 & \\ \hline
+	\end{tabular}
+\end{table}
+\pagebreak 
+
+\section{Clases con Atributos que Permiten el Manejo Tipos.}
+La clase es la unidad fundamental de programación en Java.Un programa Java Orientado a Objetos está formado por un conjunto de clases. A partir de esas clases se crearán objetos que interactuarán entre ellos enviándose mensajes para resolver el problema. Una clase representa al conjunto de objetos que comparten una estructura y un comportamiento comunes. Puede considerarse como un tipo de plantilla o prototipo de objetos: define los atributos que componen ese tipo de objetos y los métodos que pueden emplearse para trabajar con esos objetos. Las clases incluyen por tanto atributos y métodos. Los atributos definen el estado de cada objeto de esa clase y los métodos su comportamiento. Los atributos debemos considerarlos como la zona más interna, oculta a los usuarios del objeto. El acceso a esta zona se realizará a través de los métodos. Los atributos de una clase son definidos según esta sintaxis:
+\begin{figure}[H]
+	\cenering
+	\textbf{[modifVisibilidad] [modifAtributo] tipo nombreVariable [= valorInicial] ;}\\
+\end{figure}
+Donde \texbf{nombreVariable} es el nombre que daremos a la variable, siendo un nombre válido según las normas del lenguaje: por convención, en Java, los nombres de las variables empiezan con una letra minúscula (los nombres de las clases empiezan con una letra mayúscula). Un nombre de variable Java: debe ser un identificador legal de Java comprendido en una serie de caracteres Unicode. Unicode es un sistema de codificación que soporta texto escrito en distintos lenguajes humanos. Unicode permite la codificación de 34.168 caracteres. Esto le permite utilizar en sus programas Java varios alfabetos como el Japonés, el Griego, el Ruso o el Hebreo. Esto es importante para que los programadores pueden escribir código en su lenguaje nativo.
+no puede ser el mismo que una palabra clave no deben tener el mismo nombre que otras variables cuyas declaraciones aparezcan en el mismo ámbito. Tipo es el tipo de la variable, pudiendo ser un tipo básico o un objeto de una clase o de un interfaz. También puede ser una matriz o vector.\\ 
+\\
+\textbf{ATRIBUTOS}: Una clase puede tener cero o más atributos. Sirven para almacenar los datos de los objetos. En el ejemplo anterior almacenan el nombre y la edad de cada objeto Persona. Se declaran generalmente al principio de la clase. La declaración es similar a la declaración de una variable local en un método. La declaración contiene un modificador de acceso de los vistos anteriormente: private, package, protected, public. Pueden ser variables de tipo primitivo o referencias a objeto.En la clase Persona se ha declarado edad de tipo primitivo y nombre String. Ambas private y por lo tanto solo accesibles desde los métodos de la propia clase.
+\begin{figure}[H]
+\centering
+\textbf{private String nombre; \\ 
+private int edad; \\ 
+Los atributos toman el valor inicial por defecto: \\ 
+-               0 para tipos numéricos \\ 
+-               '\0' para el tipo char \\
+	-               null para String y resto de referencias a objetos.\\ }
+\end{figure}
+
+También se les puede asignar un valor inicial en la declaración aunque lo normal es hacerlo en el constructor. El valor de los atributos en cada momento determina el estado del objeto. Podemos distinguir dos tipos de atributos o variables:
+\\
+\textbf{·} Atributos de instancia: son todos los atributos no static. Cada objeto de la clase tiene sus propios valores para estas variables, es decir, cada objeto que se crea incluirá su propia copia de los atributos con sus propios valores.\\
+
+\textbf{·} Atributos de clase: son los declarados static. También se llaman atributos estáticos. Un atributo de clase no es específico de cada objeto. Solo hay una copia del mismo y su valor es compartido por todos los objetos de la clase. Un atributo de clase existe y puede utilizarse aunque no existan objetos de la clase. Podemos considerarlo como una variable global a la que tienen acceso todos los objetos de la clase. Para acceder a un atributo de clase se escibe:
+
+\begin{figure}[H]
+	\centering
+	\textbf{NombreClase.Atributo;}
+\end{figure}
+\pagebreak
+
+Por ejemplo, en la clase \textbf{Persona} podemos añadir un atributo \textbf{contadorPersonas} que indique cuantos objetos de la clase se han creado. Sería un atributo de clase ya que no es un valor propio de cada persona:
+\begin{figure}[H]
+	\centering
+	\textbf{static int contadorPersonas;}
+\end{figure}
+Cada vez que se crea una persona podemos incrementar su valor:
+\begin{figure}[H]
+	\centering
+	\textbf{Personas.contadorPersonas++;}
+\end{figure}
+Si lo declaramos además como private:
+\begin{figure}[H]
+	\centering
+	\textbf{private static int contadorPersonas}
+\end{figure}
+Solamente podremos acceder al atributo a través de un método. 
+\\
+\\
+\textbf{MÉTODOS}: Una clase puede contener cero o más métodos. Definen el comportamiento de los objetos de la clase. A través de los métodos se accede a los datos de la clase. Desde el punto de vista de la POO el conjunto de métodos de la clase se corresponden con el conjunto de mensajes a los que los objetos de esa clase pueden responder. Al conjunto de métodos de una clase se le llama interfaz de la clase. Es conveniente que todas las clases implementen los métodos de acceso ó setters/getters para cada atributo.Los métodos pueden clasificarse en:\\
+
+\textbf{·}  Métodos de instancia: Son todos los métodos no static. Operan sobre las variables de instancia de los objetos pero también tienen acceso a los atributos estáticos. La sintaxis de llamada a un método de instancia es:
+\begin{figure}[H]
+	\centering
+	\textbf{idObjeto.metodo(parametros);}- Llamada típica a un método de instancia
+\end{figure}
+
+Todas las instancias de una clase comparten la misma implementación para un método de instancia. Dentro de un método de instancia, el identificador de una variable de instancia hace referencia al atributo de la instancia concreta que hace la llamada al método (suponiendo que el identificador del atributo no ha sido ocultado en el método).
+\\
+\\
+\texbf{·} Métodos de clase: Son los métodos declarados como static. Tienen acceso solo a los atributos estáticos de la clase. No es necesario instanciar un objeto para poder utilizar un método estático. Para acceder a un método de clase se escibe:
+\begin{figure}[H]
+\centering
+	\textbf{NombreClase.metodo;}
+\end{figure}
+
+Por ejemplo para la clase Fecha podemos escribir un método estático que incremente el contador de personas:
+\begin{figure}[H]
+	\centering
+	\textbf{public static void incrementarContador(){
+        contadorPersonas++;
+}}
+\end{figure}
+Para invocar a este método:
+\begin{figure}[H]
+	\centering	
+	\textbf{Persona.incrementarContador();}
+\end{figure} 
+La API de Java proporciona muchas clases con métodos estáticos, por ejemplo, los métodos de la clase Math: Math.sqrt(), Math.pow(), etc. \\
+\pagebreak
+
+\textbf{La Clase Math}: Ahora bien vamos a revisar las funciones matemáticas mas usadas de la clase Math de Java. Esta clase ya viene incluida en nuevas versiones de Java, por lo que no habrá que importar ningún paquete para ello. Para utilizar esta clase, debemos escribir \textbf{Math.método(parámetros);} donde método sera uno de los siguientes y parámetros aquellos que tengamos que usar. Un método puede estar sobrescrito para distintos tipos de datos. Recordemos que si almacenamos el resultado de la función, deb coincidir con el tipo de la variable.
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ c | l | l | c }
+MÉTODO & DESCRIPCIÓN & PARÁMETROS & TIPO DE DATO DEVUELTO \\ \hline
+abs & Devuelve el valor & Un parametro que puede ser & El mismo que introduces. \\ 
+& absoluto de un número & un int, double float o long &   \\  \hline
+arcos & Devuelve el arco coseno de& Double & Double \\
+ & un ángulo en radianes  &    &     \\ \hline 
+asin & Devuelve el arco seno de un & Double & Double \\
+     &  de un ángulo en radianes & & \\ \hline 
+atan & Devuelve el arco tangente  & Double & Double \\ 
+     &   entre -PI/2 Y PI/2 &  & \\ \hline
+atan2 & Devuelve el arco tangente & Double & Double \\ 
+& entre -PI y PI &  &  \\ \hline 
+ceil & Devuelve el entero más  & Double & Double \\ 
+  & cercano por arriba & &  \\ \hline 
+floor & Devuelve el entero más & Double & Double \\
+ & cercano por abajo &  &  \\ \hline 
+round & Devuelve el entero & Double o float & long (si introduces un double) \\ 
+      & más cercano & & o int (si introduces un float) \\ \hline
+cos & Devuelve el coseno   & Double & Double \\ 
+    & de un ángulo & &  \\ \hline 
+sin & Devuelve el seno & Double & Double \\ 
+    & de un ángulo &  & \\ \hline 
+tan & Devuelve la tangente & Double & Double \\ 
+    & de un ángulo &  &   \\  \hline 
+exp & Devuelve el exponencial & Double & Double \\ 
+    & de un número &  &  \\ \hline 
+log & Devuelve el logaritmo & Double & Double \\ 
+    & en base e de un número & & \\  \hline
+max & Devuelve el mayor de dos. & Dos parametros que pueden ser & El mismo tipo que introduces. \\ 
+		& entre dos valores   & dos int, double, float o long & \\ \hline 
+min & Devuelve el menor de dos & Dos parametros que pueden ser &El mismo tipo que introduces. \\ 
+   & entre dos valores & dos int, double, float o long &  \\ \hline 
+random & Devuelve un número  & Ninguno  & Double \\ 
+		& aleatorio entre 0 y 1.& & \\ 
+		& Se puede cambiar el & &  \\ 
+		& rango de generación. & & \\ \hline 
+sqlrt & Devuelve la raíz cuadrada  & Double & Double \\ 
+      & de un número & & \\ \hline 
+pow & Devuelve un número elevado & Dos parámetros double & Double \\
+  & a un exponente & (base y exponente) & \\ \hline 
+	\end{tabular} 
+\end{table}
+También tenemos en esta clase unas constantes definidas. 
+\begin{table}[H]
+\centering
+	\begin{tabular}{ c | c }
+		CONSTANTE & DESCRIPCIÓN \\ \hline 
+		PI & Devuelve el valor de PI. Es un double. \\ \hline 
+		E & Devuelve el valor de E. Es un double. \\ \hline 
+	\end{tabular}
+\end{table}
+\end{document}

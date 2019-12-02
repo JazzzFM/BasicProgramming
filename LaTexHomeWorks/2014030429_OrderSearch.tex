@@ -1,0 +1,203 @@
+\documentclass{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{enumerate}
+\title{Busqueda y Ordenamiento}
+\author{Flores Rodr\'{i}guez Jaziel David.}
+
+\begin{document}
+\maketitle
+
+\section*{Busqueda}
+\subsection*{Busqueda lineal}
+
+En inform\'atica, la b\'usqueda lineal o la b\'usqueda secuencial es un m\'etodo para encontrar un valor objetivo dentro de una lista. \'Esta comprueba secuencialmente cada elemento de la lista para el valor objetivo hasta que es encontrado o hasta que todos los elementos hayan sido comparados.\\
+\\
+B\'usqueda lineal es en tiempo el peor, y marca como m\'aximo n comparaciones, donde n es
+lalongitud de la lista. Si la probabilidad de cada elemento para ser buscado es el mismo,
+entonces la b\'usqueda lineal tiene una media de n/2 comparaciones, pero esta media puede
+ser afectado si las probabilidades de b\'usqueda para cada elemento var\'ian.
+
+\subsection*{Busqueda binaria}
+
+En ciencias de la computaci\'on y matem\'aticas, la b\'usqueda binaria, tambi\'en conocida
+como b\'usqueda de intervalo medio \'o busqueda logar\'itmica es un algoritmo de
+b\'usqueda que encuentra la posic\'ion de un valor en un array ordenado. Compara el valor
+con el elemento en el medio del array, si no son iguales, la mitad en la cual el valor no
+puede estar es eliminada y la búsqueda contin\'ua en la mitad restante hasta que el valor
+se encuentre.\\
+La b\'usqueda binaria es computada en el peor de los casos en un tiempo logar\'itmico, realizando $O(lg n)$ comparaciones, donde $n$ ees el n\'umero de elementos del arreglo y
+$log$ es el logaritmo. La b\'usqueda binaria requiere solamente
+$O(1)$ en espacio, es decir, que el espacio requerido por el algoritmo es el mismo para
+cualquier cantidad de elementos en el array. Aunque estructuras de datos especializadas en
+la b\'usqueda r\'apidas como las tablas hash pueden ser m\'as eficientes, la b\'usqueda
+binaria se aplica a un amplio rango de problemas de b\'usqueda.\\
+
+Aunque la idea es simple, implementar la b\'usqueda binaria correctamente requiere
+atenc\'on a algunos detalles como su condici\'on de parada y el c\'alculo del punto medio
+de un intervalo. \\
+Existen numerosas variaciones de la b\'usqueda binaria. Una variaci\'on particular
+(cascada fraccional) acelera la b\'usqueda binaria para un mismo valor en m\'ultiples
+arreglos.
+
+\subsection*{Busqueda hash}
+
+La busqueda hash es una estructura de datos que asocia llaves o claves con valores.La
+operaci\'on principal que soporta de manera eficiente es la busqueda: permite el acceso a
+ los elementos almacenados a partir de una clave generada. Funciona transformando la clave
+ con una funcion hash en un hash, un n\'umero que identifica la posicion donde la tabla
+hash localiza el valor deseado \\
+\\
+Las tablas hash se suelen implementar sobre vectores de una dimensi\'on, aunque se pueden
+hacer implementaciones multi-dimensionales basadas en varias claves. Como en el caso de
+los arrays, las tablas hash proveen tiempo constante de b\'usqueda promedio $O(1)$, sin
+importar el n\'umero de elementos en la tabla. Sin embargo, en casos particularmente malos
+el tiempo de b\'usqueda puede llegar a $O(n)$, es decir, en funci\'on del n\'umero de
+elementos.\\
+\\
+Comparada con otras estructuras de arrays asociadas, las tablas hash son m\'as \'utiles
+cuando se almacenan grandes cantidades de informaci\'on.\\
+\\
+Las tablas hash almacenan la informaci\'on en posiciones pseudo-aleatorias, as\'i que el acceso ordenado a su contenido es bastante lento. Otras estructuras como \'arboles binarios auto-balanceables tienen un tiempo promedio de b\'usqueda mayor (tiempo de b\'usqueda $O(log n)$, pero la informaci\'on est\'a ordenada en todo momento.\\
+
+\section*{Ordenamiento}
+
+\subsection*{Shellsort}
+
+El ordenamiento Shell (Shell sort en ingl\'es) es un algoritmo de ordenamiento. El m
+\'etodo se denomina Shell en honor de su inventor Donald Shell. Su implementaci\'on original,
+requiere O(n2) comparaciones e intercambios en el peor caso. Un cambio menor presentado en
+el libro de V. Pratt produce una implementaci\'on con un rendimiento de $O(n log2 n)$ en
+el peor caso. Esto es mejor que las $O(n2)$ comparaciones requeridas por algoritmos
+simples pero peor que el \'optimo $O(n log n)$. Aunque es f\'acil desarrollar un sentido
+intuitivo de c\'omo funciona este algoritmo, es muy dif\'icil analizar su tiempo de
+ejecuci\'on.\\
+ \clearpage
+El algoritmo Shell sort mejora el ordenamiento por inserci\'on comparando elementos
+separados por un espacio de varias posiciones. Esto permite que un elemento haga "pasos
+m\'as grandes" hacia su posici\'on esperada. Los pasos m\'ultiples sobre los datos se
+hacen con tama\~{n}os de espacio cada vez más peque\~{n}os. El \'ultimo paso del Shell
+sort es un simple ordenamiento por inserc\'on, pero para entonces, ya est\'a garantizado
+que los datos del vector están casi ordenados. \\
+
+\subsection*{Incerci\'on directa}
+
+El ordenamiento por inserci\'on (insertion sort en ingl\'es) es una manera muy natural de
+ordenar para un ser humano, y puede usarse f\'acilmente para ordenar un mazo de cartas
+numeradas en forma arbitraria. Requiere $O(n^2)$ operaciones para ordenar una lista de n
+elementos.\\
+\\
+Inicialmente se tiene un solo elemento, que obviamente es un conjunto ordenado. Despu\'es,
+cuando hay $k$ elementos ordenados de menor a mayor, se toma el elemento $k+1$ y se
+compara con todos los elementos ya ordenados, deteni\'endose cuando se encuentra un
+elemento menor (todos los elementos mayores han sido desplazados una posici\'on a la
+derecha) o cuando ya no se encuentran elementos (todos los elementos fueron desplazados y
+este es el m\'as peque\~{n}o). En este punto se inserta el elemento $k+1$ debiendo
+desplazarse los dem\'as elementos.
+
+\subsection*{Selecci\'on directa}
+
+El ordenamiento por selecci\'on (Selection Sort en ingl\'es) es un algoritmo de
+ordenamiento que requiere $O$ operaciones para ordenar una lista de $n$ elementos.
+Su funcionamiento es el siguiente:\\
+\begin{itemize}
+\item Buscar el m\'inimo elemento de la lista
+\item Intercambiarlo con el primero
+\item Buscar el m\'inimo en el resto de la lista
+\item Intercambiarlo con el segundo
+\end{itemize}
+Y en general;\\
+\begin{itemize}
+\item Buscar el m\'inimo elemento entre una posici\'on $i$ y el final de la lista
+\item Intercambiar el m\'inimo con el elemento de la posici\'on $i$
+\end{itemize}
+
+\subsection*{Intercambio directo}
+
+La Ordenaci\'on de burbuja (Bubble Sort en ingl\'es) es un sencillo algoritmo de
+ordenamiento. Funciona revisando cada elemento de la lista que va a ser ordenada con el
+siguiente, intercambi\'andolos de posici\'on si est\'an en el orden equivocado. Es necesario
+revisar varias veces toda la lista hasta que no se necesiten m\'as intercambios, lo cual
+significa que la lista est\'a ordenada. Este algoritmo obtiene su nombre de la forma con
+la que suben por la lista los elementos durante los intercambios, como si fueran
+peque\~nas "burbujas". Tambi\'en es conocido como el m\'etodo del intercambio directo.
+Dado que solo usa comparaciones para operar elementos, se lo considera un algoritmo de
+comparaci\'on, siendo el m\'as sencillo de implementar.
+
+\subsection*{Ordenamiento Heapsort}
+
+El ordenamiento por mont\'iculos (heapsort en ingl\'es) es un algoritmo de ordenamiento no
+recursivo, no estable, con complejidad computacional $O(n log n)$ .\\
+\\
+Este algoritmo consiste en almacenar todos los elementos del vector a ordenar en un
+mont\'iculo (heap), y luego extraer el nodo que queda como nodo ra\'iz del mont\'iculo
+(cima) en sucesivas iteraciones obteniendo el conjunto ordenado. Basa su funcionamiento en
+una propiedad de los mont\'iculos, por la cual, la cima contiene siempre el menor elemento
+(o el mayor, seg\'un se haya definido el mont\'iculo) de todos los almacenados en \'el.
+El algoritmo, despu\'es de cada extracci\'on, recoloca en el nodo ra\'iz o cima, la \'ultima
+hoja por la derecha del \'ultimo nivel. Lo cual destruye la propiedad heap del \'arbol.
+Pero, a continuaci\'on realiza un proceso de "descenso" del n\'umero insertado de forma
+que se elige a cada movimiento el mayor de sus dos hijos, con el que se intercambia.
+Este intercambio, realizado sucesivamente "hunde" el nodo en el \'arbol restaurando la
+propiedad mont\'iculo del \'arbol y dejando paso a la siguiente extracci\'on del nodo ra\'iz.\\
+\\
+El algoritmo, en su implementaci\'on habitual, tiene dos fases. Primero una fase de
+construcci\'on de un mont\'iculo a partir del conjunto de elementos de entrada, y
+despu\'es, una fase de extracci\'on sucesiva de la cima del mont\'iculo.
+La implementaci\'ion del almac\'en de datos en el heap, pese a ser conceptualmente un
+ \'arbol, puede realizarse en un vector de forma f\'acil. Cada nodo tiene dos hijos y por
+tanto, un nodo situado en la posici\'on $i$ del vector, tendr\'a a sus hijos en las
+posiciones $2 x_i$ y $2 x_{i +1}$ suponiendo que el primer elemento del vector tiene un
+\'indice $= 1$. Es decir, la cima ocupa la posici\'on inicial del vector y sus dos hijos
+la posici\'on segunda y tercera, y as\'i, sucesivamente. Por tanto, en la fase de
+ordenaci\'on, el intercambio ocurre entre el primer elemento del vector (la ra\'iz o cima
+del \'arbol, que es el mayor elemento del mismo) y el \'ultimo elemento del vector que es
+la hoja m\'as a la derecha en el \'ultimo nivel. El \'arbol pierde una hoja y por tanto
+reduce su tama\~{n}o en un elemento. El vector definitivo y ordenado, empieza a
+construirse por el final y termina por el principio
+
+\subsection*{Ordenamiento Quicksort}
+
+Este algoritmo fue propuesto por Sir Charles Antony Richard Hoare en 1960. Hoare no s\'olo
+encontr\'o una forma muy ingeniosa para ordenar elementos, sino que adem\'as logr\'o una
+demostraci\'on matem\'atica que prueba que este sistema es en realidad el m\'as rápido
+posible, por lo que desde hace m\'as de 50 a\~{n}os la discusi\'on de que pasos conviene
+seguir para ordenar una lista ha dejado de tener sentido. La respuesta es siempre la
+misma: Quicksort.\\
+\\
+Quicksort consiste en dividir la lista original en dos listas más peque\~nas. Para ello,
+se elige un elemento cualquiera (aunque en general se suele utilizar el que se encuentra
+en medio de la lista) que nos servir\'a como pivote. Luego se recorre toda la lista, con
+el objeto de colocar los elementos más peque\~{n}os que el pivote a la izquierda del
+mismo, y los mayores a la derecha. Las implementaciones m\'as eficientes realizan esta
+tarea a la vez, recorriendo simultáneamente la lista en ambas direcciones e intercambiando
+entre s\'i cada par de elementos descolocados que se encuentran a su paso. Culminada
+esta etapa tenemos un grupo de elementos menores que el pivote, el pivote, y otro grupo
+compuesto por números mayores a \'el.
+
+\subsection*{Ordenamiento Mergesort}
+El algoritmo de ordenamiento por mezcla (merge sort en ingl\'es) es un algoritmo de
+ordenamiento externo estable basado en la t\'ecnica divide y vencer\'as. Es de complejidad $O(n log n)$. \\
+\\
+Fue desarrollado en 1945 por John Von Neumann.\\
+Conceptualmente, el ordenamiento por mezcla funciona de la siguiente manera:\\
+\begin{itemize}
+
+\item Si la longitud de la lista es 0 \'o 1, entonces ya est\'a ordenada. En otro caso:
+\item Dividir la lista desordenada en dos sublistas de aproximadamente la mitad del
+tama\~{n}o.
+\item Ordenar cada sublista recursivamente aplicando el ordenamiento por mezcla.
+\item Mezclar las dos sublistas en una sola lista ordenada.
+
+\end{itemize}
+
+El ordenamiento por mezcla incorpora dos ideas principales para mejorar su tiempo de
+ejecuci\'on:
+\begin{itemize}
+\item Una lista peque\~na necesitar\'a menos pasos para ordenarse que una lista grande.
+
+\item Se necesitan menos pasos para construir una lista ordenada a partir de dos listas tambi\'en ordenadas, que a partir de dos listas desordenadas.
+\end{itemize}
+\end{document}

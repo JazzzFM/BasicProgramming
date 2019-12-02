@@ -1,0 +1,87 @@
+\documentclass[12pt]{article}  
+\usepackage[spanish]{babel}       
+\usepackage[letterpaper]{geometry} 
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\author{Jaziel David Flores Rodríguez.}       
+\date{\today} 
+\title{Complejdad de Funciones.} 
+
+\begin{document}
+\maketitle
+
+\section{Introducción.}
+\textbf{Definición.} Suponga que $f,g:\mathbb{N}\rightarrow {\mathbb{R}}^{+}$ y que existen ${n}_{0}\in\mathbb{N}$  y $C\in{\mathbb{R}}^{+}$ tales que para todo $n\geq{n}_{0}$ se cumple $f(n)\leq Cg(n)$, entonces decimos que $f=O(g)$.\\
+
+\textbf{Proposición}: Sean $f,g:\mathbb{N}\rightarrow {\mathbb{R}}^{+}$ tales que, para $S\in\mathbb{R}^{+}$, se cumple que:
+\[
+	\lim_{n\to\infty}\frac{f(n)}{g(n)} = S.
+\]
+
+Entonces $f=O(g)$.\\
+\textbf{Demostración.}\\
+
+Sea $h:\mathbb{N}\rightarrow {\mathbb{R}}^{+}$ definida por $h(n) = \frac{f(n)}{g(n)}$. Por hióteis $\left \{ h(n) \right \}$ es una sucesión convergente, cuyo límite es $S\in\mathbb{R}^{+}$. Sea $\epsilon > 0$, entonces $\exists{N}_{0} \in \mathbb{N}$ tal que $\forall n \geq {N}_{0}$ se cumple que: 
+
+\[
+	\left | h(n) - S \right | < \epsilon
+\]
+
+Luego se tiene que:
+
+\[
+	\left | \frac{f(n)-g(n)S}{g(n)} \right | < \epsilon
+\]
+
+Es decir se tiene que: 
+
+\[
+	\left | f(n)- Sg(n)\right | < \epsilon \left | g(n) \right |
+\]
+
+Por la desigualdad del triángulo se tiene que:
+
+\[
+\left| f(n) \right| - \left| Sg(n) \right| \leq \left | f(n)- Sg(n)\right | < \epsilon \left | g(n) \right |
+\]
+O bien, por transitividad tenemos que: 
+\[
+\left| f(n) \right| - S\left| g(n) \right| <  \epsilon \left | g(n) \right | \Rightarrow 
+\left| f(n) \right| < (S+\epsilon)\left | g(n) \right |
+\]
+Como $f(n)>0$ y $g(n)>0$ $\forall n \in \mathbb{N}$, entonces: 
+\[
+	f(n)< (S+ \epsilon)g(n) \quad \forall n \geq {N}_{0}
+\]
+Tome $M=S+\epsilon$, entonces $f(n)\leq M g(n)$ $\forall n \geq {N}_{0}$. Por lo tanto $f=O(g)$. \\ \textit{Quod erat demonstrandum.}\\
+
+\section{Ejercicios.}
+
+Para  cada $f(n):\mathbb{N}\rightarrow {\mathbb{R}}^{+}$  en  los  ejercicios  del indique  el  inciso  que  sea  una  mejor estimación entre las siguientes:\\
+
+2) $f(n)=\binom{n}{3}=\frac{n!}{6(n-3)!}<n!$, entonces $f=O(g)$, siendo $g(n)=n!$ . \\
+
+3) $f(n)=10{ln}^{3}(n)+ 20{n}^{2}$, entonces $f=O(g)$, siendo $g(n)={n}^{2}$.\\ 
+
+4) El número de monomios en $x, y, z$ de grado total a lo más n, entonces $f=O({n}^{n})$.\\
+
+5) El número de polinomios en x de grado a lo más n cuyos coeficientes son 0 o 1, $f=O(n)$.\\
+
+6) El número de polinomios en x de grado a lo más $n−1$ cuyos coeficientes son enteros entre 0 y n, $f=O(n!)$. \\ 
+
+7) El área de una figura fija despues de su amplificación en un factor de n, $f=O({n}^{2})$.\\ 
+
+8) La cantidad de espacio de memoria que una computadora requiere para almacenar el número n, $f=O(n)$.\\
+
+9) La cantidad de espacio de memoria que una computadora requiere para almacenar ${n}^{2}$,  $f=O({n}^{2})$.\\ 
+
+10) La suma de los primerosnenteros positivos, $f=O({n}^{2})$.\\
+
+11) La suma de los cuadrados de los primeros n enteros positivos, $f=O({n}^{3})$.\\
+
+12) El número de bits en la suma de los cuadrados de los primeros n enteros positivos, $f=O({2}^{n})$.\\
+
+\end{document}
+

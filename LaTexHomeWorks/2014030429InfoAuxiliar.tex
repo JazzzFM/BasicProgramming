@@ -1,0 +1,483 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%INFORMACIÓN AUXILIAR DE LEGUAJE C Y JAVA. 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Qué tipo de documento estamos por comenzar:
+
+
+%% Primero escribimos el título
+\title{Tarea 1: Información Auxiliar de los Lenguajes de Programación C y Java.}
+\author{Instituto Politécnico Nacional\\
+	Escuela Superior de Física y Matemáticas. \\
+	\\
+	Programación II. \\ \\ 
+	Profesor: Luis Carlos Coronado García.\\
+	Alumno: Flores Rodríguez Jaziel David. \\
+  \small jazzesfm@gmail.com\\
+  \small Ciudad de México
+  \date{}
+}
+
+\begin{document}
+%% Hay que decirle que incluya el título en el documento
+\maketitle
+
+%% Aquí podemos añadir un resumen del trabajo (o del artículo en su caso) 
+\begin{abstract}
+Este documento pretende ser una guia rápida sobre la documentación de consulta para cualquier lector sobre estos dos lenguajes, inclusive ser una guia para mí mismo que ahora estoy escribiendo esto, además de ser una buena práctica del uso de LaTex en Linux usando VIM y algunos plugins para la terminal de Linux en el compilado de este. 
+\end{abstract}
+
+\section{El el uso del lenguaje C} 
+C es el lenguaje de programacion de propósito general asociado, de modo universal, al sistema operativo UNIX. Sin embargo, la popularidad, eficacia, y potencia de C, se ha producido porque este lenguaje no está prácticamente asociado a ningún sistema operativo, ni a ninguna máquina. Ésta es la razón fundamental, por la cual C, es conocido como el \textbf{Lenguaje de programación de sistemas, por excelencia}.\\
+C es una evolución de los lenguajes BCPL -desarollado por Martin Richard- y B -desarollado por Ken Thompson en 1970- para el primitivo UNIX de la computadora DEC PDP-7. C nació realmente en 1978, con la publicación de \textit{The C Programming Languaje}, por Brian Kerighan y Denis Ritche (Prince Hall, 1978). C es un \textit{lenguaje de alto nivel}, que permite programar instrucciones de lenguaje de propósito general; aunque en su diseño primó el hecho de que fuera especificado como un lenguaje de programación de Sistemas, lo que le proporciona una enorme potencia y flexibilidad. 
+
+\subsection{Palabras Reservadas en C.}
+Las palabras reservadas son identificadores predefinidos (tienen un significado especial). En todos los lenguajes de programación existe un conjunto de palabras reservadas. En lenguaje C (ANSI C89), existen las siguientes:
+\begin{table}
+	\centering
+\begin{tabular}{l | c | c | c } 
+	\hline
+· auto & · double & · int & · struct \\ \hline
+· break	& · else & · long & · switch \\ \hline
+· case & · enum & · register & · typedef \\ \hline
+· char & · extern & · return &· union \\ \hline
+· const	& · float & · short & · unsigned \\ \hline 
+· continue & · for & · signed & · void \\ \hline 
+· default & · goto & · sizeof & · volatile \\ \hline 
+· do & · if & · static & · while \\  
+\hline
+\end{tabular}
+\\
+\caption{\label{tab:Palabras reservdas en C}Palabras Reservadas en C.}
+\end{table}
+\subsection{Tipos de datos Básicos o Primitivos en C.}
+C no soporta un gran número de tipos de datos predefinidos pero tiene la capacidad de crear sus propios tipos de datos Todo los tipos de datos simpes o básicos de C son, esencialmente, los números. El tamaño en bits asignado al  tipo  de  dato  que  se  use depende de la capacidad de la computadora utilizada. Ejemplo: en una PC normal un tipo int es de 16 bits, para  una AIX-RISC system6000 un tipo int es de 32 bits. Los tres tipos de datos básicos de datos son: 
+
+\begin{table}[H]
+	\centering
+ \begin{tabular}{l | c | c | c }
+\hline
+Tipo & Ejemplo & Tamaño en bytes & Rango: Mínimo y Máximo.\\ \hline
+char & 'c' & 1 & -128 a 127.\\ \hline
+int & 1024 & 2 & -32768 a 32767. \\ \hline
+float & 10.5 & 4 & $3.4X{10}^{-38}$ a $3.4X{10}^{38}$ . \\
+\hline
+\end{tabular}
+\\
+\caption{\label{tab:Tipos de Datos Básicos}Tipos de Datos Básicos.}
+\end{table} 
+\\
+
+Cada tipo de dato tiene su propia \textit{lista de atributos}  que definen las caracrerísticas del tipo, y pueden variar de una máquina a otra. Los tipos da datos también tienen variaciones o modificaciones de tipos de datos que permiten el uso más eficiente de los tipos de los tipos de datos. 
+
+
+\begin{table}[H]
+	\centering
+ \begin{tabular}{l | c | c | l }
+\hline
+Tipo & Ejemplo & Tamaño en bytes & Rango: Mínimo y Máximo.\\ \hline
+unsigned char& 'j' & 1 & 0 a 255. \\ \hline
+signed char&'-j' & 1 & -128 a 127.\\\hline
+short & 45 & 2 & -32768 a 32767. \\ \hline
+unsigned int & 30944 & 2 & 0 a 65535. \\ \hline
+signed int & -3495 & 2 & -32768 a 32767. \\ \hline
+short int & 3450 & 2 & -32768 a 32767. \\ \hline
+unsigned short int & 435 & 2 & 0 a 655. \\ \hline
+signed short int & 342 & 2 & -32768 a 32767. \\ \hline
+long int & 434532 & 4 &	-2147483648 a 2147483647. \\ \hline
+signed long int	& 3534 & 4 & -2147483648 a 2147483647. \\ \hline
+unsigned long int & 5345 & 4 & 0 a 4294967295. \\ \hline 
+long & 43455 & 4 & -2147483648 a 2147483647. \\ \hline
+unsigned long & 34535 & 4 & 0 a 4294967295. \\ \hline
+double & 324.34 & 8 & $1.7X{10}^{-308}$ a $1.7X{10}^{308}$. \\ \hline
+long double & 342342.43 & 8 0 10 (según versión) & $1.7X{10}^{-308}$ a $1.7X{10}^{308}$   o   $3.4X{10}^{-4932}$ a $1.1X{10}^{4932}$. \\ 
+\hline
+\end{tabular}
+\\
+\caption{\label{tab:Combinaciones de tipos de datos}Combinaciones de Tipos de Datos.}
+\end{table} 
+\\
+\pagebreak 
+
+\subsection{Operadores en C y su Precedencia y Prioridad.} 
+Los operadores permiten manipular información. Se denomina operando al elemento que interviene en el uso de operadores. En los operadores pueden ser unarios y binarios, adicionalmente existe uno que es ternario. Los operandos son valores de cierto tipo, los cuales pueden ser obtenidos de expresiones evaluadas antes de intervenir en la manipulación de la información con un operador en particular. Asimismo, las expresiones puden contener operadores. A continuación describiremos los operadores en C.\\
+\\
+\textbf{Aritméticos}.
+Los operadores aritméticos tienen como operandos valores numéricos, que pueden ser reales o enteros. El resultado que se obtiene es el de la operación aritmética limitada por el rango y/o precisión de los operandos involucrados.
+\\
+\begin{table}[H]
+	\centering
+ \begin{tabular}{l | c | c }
+\hline
+Operador & Descripción & Ejemplo. \\ \hline
++ & Suma de dos operandos. Más unario. & 3+5, +23. \\ \hline
+- & Resta de dos operandos. Menos unario. & 3-5, 7. \\ \hline
+/ & División de dos operandos cuando uno es real. &  3/5.0 .\\
+  & Cocientede la división cuando los dos operandos son enteros & 3/5 .\\ \hline
+\% & Módulo de dos operandos enteros. &  13 mód 5. \\
+\hline
+\end{tabular}
+\\
+\caption{\label{tab:Operadores Aritméticos} Operadores Aritméticos.}
+\end{table} 
+\textbf{Operadores Relacionales.}
+Los operadores relacionales tienen como operandos valores numéricos, que pueden ser reales o enteros. El resultado que se obtiene es la representación de falso (valor entero cero) o verdadero (valor entero distinto de cero).
+\begin{table}[H]
+\centering
+\begin{tabular} {l | c | c }
+\hline
+Operador & Descripción & Ejemplo. \\ \hline
+< & Menor que. Compara si el primer operando es menor que & 3<5 .\\ 
+  & el segundo operando.                                  &       \\ \hline 
+> & Mayor que. Compara si el primer operando es mayor que & 3>5 .\\ 
+  & el segundo operando.                                  &       \\ \hline 
+<= & Inferior o igual a. Compara si el primer operando es & 3<=5 . \\ 
+   & inferior o igual a el segundo operando. 		  & 	\\ \hline
+>= & Superior o igual a. Compara si el primer operando es &  3>=5 . \\ 
+   & superior o igual a el segundo operando.		  &  	\\ \hline
+== & Igual a. Compara si el primer operando es igual a el & 3==5 . \\ 
+   & segundo operando					  &	\\ \hline
+!= & Distitno de. Compara si el primer operando es distinto & 3!=5 . \\ 
+   & del segundo operando.				&  	\\ \hline
+	\end{tabular} 
+\\
+\caption{\label{tab:Operadores Relacionales}Operadores Relacionales.}
+\end{table}
+\pagebreak
+
+\textbf{Lógicos}.
+Los operadores lógicos tienen como operandos valores enteros que se interpretan como valores
+verdadero (entero distinto de cero) o falso (entero igual a cero). El resultado que se obtiene es el
+valor de verdad resultante, cuya representación es falso (valor entero cero) o verdadero (valor entero
+distinto de cero).
+\begin{table}[H]
+	\centering
+\begin{tabular}{l | c | c } 
+Operador & Descripción & Tabla de Verdad. \\ \hline
+\&\& & Conjunción Lógica a y b & a b  a y b \\
+    & &0 0    0 \\
+    & &0 1    0 \\
+    & &1 0    0 \\
+    & &1 1    1 \\ \hline
+|| & Disyunción lógica a o b & a b  a o b \\ 
+   &  &0 0    0 \\
+   &  &0 1    1 \\ 
+   &  &1 0    1 \\
+   &  &1 1    1 \\ \hline
+!  & Negación lógica \~a. & a \~a \\
+   & & 0 1 \\ 
+   & & 1 0 \\ \hline		
+	\end{tabular} 
+\\
+	\caption{Operadores Lógicos. Nota: en las tablas de verdad se está representando a un valor distinto de cero como 1.} 
+\end{table}
+
+\textbf{Bit a Bit.}Los operadores bit a bit realizan las operaciones en cada bit de los operandos de forma individual.
+El cero se interpreta como falso y distinto de cero como verdadero.
+\begin{table}[H]
+\centering
+\begin{tabular}{ l | c }	
+Operador & Descripción. \\ \hline
+\& & Conjunción. \\ \hline 	
+|  & Disyunción \\ \hline 
+\textasciicircum{} & Disyunción Exclusiva. \\ \hline 	
+\textasciitilde{} & Negación. \\ \hline 
+<< & Corrimiento a la izquierda (multiplicación \\	
+   & por potencias de dos módulo ${2}^{n}$). \\ \hline	
+>> & Corrimiento a la derecha ( cociente al \\ 
+   & dividir entre potencias de dos) . \\ \hline				
+   \end{tabular}										
+\\			
+\caption{Operadores Bit a Bit.}
+\end{table}																																								
+
+\textbf{Post/Pre Decremento/Incremento.} Los operadores incrementales y decrementales aumentan o disminuyen en uno al operando. Puede ser antes (pre) o después (post) de usar el valo. 
+															
+\begin{table}[H]																
+	\centering	
+	\begin{tabular}{ l | c | c }
+Operador & Nombre & Descripción \\ \hline
+													
+variable ++ & Post Incremento & Incrementa en uno al valor actual de una variable, \\
+            &  & luego usa el valor. \\ \hline	
+variable$--$ & Post Decremento & Decrementa en uno al valor actual de una variable, \\		
+            &  & luego usa el valor. \\ \hline							
+$++$ variable & Pre Incremento & Incrementa en uno al valor actual de una variable,
+	    &  & pero antes lo usa. \\ \hline
+$--$ variable & Pre Decremento & Decrementa en uno al valor actual de una variable,  \\
+	    &  & pero antes lo usa. \\ \hline
+	    \end{tabular}
+	    \\
+	    \caption{Operadores de Post/Pre Incremento/Decremento}
+    \end{table}
+    \pagebreak
+
+\textbf{De Asignación} Los operadores de asignación son binarios y el primer operando debe ser una variable a la que se le va a asignar el valor correspondiente al segundo operando.
+
+\begin{table}[H]
+ \centering
+		   \begin{tabular}{ l | c | c }
+$=$ & Asignación & Asigna un valor dado a una variable	 \\  \hline 
+$+=$ & Incremento de & Incrementa en una cantidad dada al valor de una variable \\ \hline
+$-=$ & Decremeto de & Decrementa en una cantidad dada al valor de una variable \\ \hline 
+$*=$ & Asignación del producto & Multiplica al valor de una variable \\ 
+   &   & con un número dado y se lo asigna a la misma \\ \hline
+$/=$ & Asignación de la división & Divide al valor de una variable \\
+   &   & para un número dado y se lo asigna a la misma. \\ \hline
+	\end{tabular}
+	\\
+	\caption{Operadores de Asignación.} 
+\end{table}
+
+\textbf{Operador Ternario.}
+El oporador tenario "? : " tiene la siguiente sintaxis exp?exp v :exp f y procede de la siguiente forma. Si al evaluar la expresión como una entera, si el resultado es distinto de cero, se interpreta como verdadero y se ejecuta la exp v . Por el contrario, si el restulado es cero, se interpreta como falso y se ejecuta la exp f. Ejemplo a<b? a : b evalua la expresión a<b, en caso de considerarse verdadera se evalúa la expresión que solo contiene a a, dando ese mismo valor por resultado. En caso de considerarse falsa, se evalúa la expresión que solo contiena a b, dando como resultado ese mismo valor. Lo anterior nos auxiliar para hayar el mı́nimo de dos números.\\
+\\
+\textbf{Precedencia y Asociatividad de Operadores.}
+\begin{table}[H]
+        \centering
+        \begin{tabular}{ c | c | c | c }
+
+Nivel & Operadores & Descripción & Asociatividad. \\ \hline
+1 & () [ ] -> . & Acceso a un elemento de un vector y paréntesis & Izquierdas. \\ \hline
+2 & + - ! \textasciitilde{}  & Signo (unario), negación lógica, negación bit a bit& \\
+  & * \& $++$ $--$ & Acceso a un elemento (unarios): puntero y dirección & \textbf{Derechas}. \\
+  & (cast) \textbf{sizeof} & incremento y decremento (pre y post) &  \\
+  &   & Conversión de tipo (casting) y tamaño de un elemento. \\ \hline
+3 & * / \% & Producto, División y Módulo & Izquierdas. \\ \hline
+4 & + - & Suma y Resta & Izquierdas. \\ \hline
+5 & >> << & Desplazamientos & Izquierdas. \\ \hline
+6 & < <= >= > & Comparaciones de Superioridad e Inferioridad & Izquierdas. \\ \hline
+7 & == != & Comparaciones de igualdad & Izquierdas. \\ \hline
+8 & \& & Y(And) bit a bit (binario) & Izquierdas. \\ \hline
+9 & \textasciicircum{} & O-exclusivo (Exclusivo-Or)(binario) & Izquierdas. \\ \hline
+10 & | & O-(Or) bit a bit (binario) & Izquierdas. \\ \hline
+11 & \&\& & Y(And) Lógico & Izquierdas. \\ \hline
+12 & || & O-(Or) Lógico & Izquierdas. \\ \hline
+13 & ? : & Condicional &\textbf{Derechas}. \\ \hline
+14 & = += -= *= /= & Asignaciones & \textbf{Derechas} \\ \hline
+\end{tabular}
+\\
+\caption{Precedencia y Asociatividad de Operdores.}
+\end{table}
+\pagebreak
+
+\subsection{Formatos para escibir en la salida estándar.}
+Los formatos empleados en las funciones printf y scanf nos auxiliarn para escribir o leer el valor de una variable desde la entrada estándar o a la salida estándar. La forma básica de los formatos se muestra en la siguiente tabla.
+\begin{table}[H]
+\centering
+\begin{tabular}{ c | c | c }
+
+Formato & Tipo de Dato & Descripción \\ \hline
+\%d & Decimal, entero con signo. & El valor al que se refiere este formato es inter- \\ 
+    & & pretado como un entero en base 10 con signo. \\ \hline
+\%i & Decimal, entero con signo. & Otra forma de representar \%d.\\ \hline
+\%o & Octal, entero sin signo. & Octal, entero sin signo. \\ \hline
+\%x & Hexadecimal, entero sin signo. & El valor al que se refiere este formato es inter- \\ 
+    & & pretado como un entero en base 16 sin signo, \\ 
+    & & los sı́bolos empleados son 0, 1, 2, 3, 4, 5, 6, 7, \\ 
+    & & 8, 9, a, b, c, d, e, f. \\ \hline
+\%X & Hexadecimal, entero sin signo. & El valor al que se refiere este formato es inter-\\ 
+    & & pretado como un entero en base 16 sin signo, \\ 
+    & & los sı́bolos empleados son 0, 1, 2, 3, 4, 5, 6, 7, \\ 
+    & & 8, 9, A, B, C, D, E, F. \\ \hline
+\%u & Decimal, entero sin signo. & El valor al que se refiere este formato es inter- \\
+    & & pretado como un entero en base 10 sin signo. \\ \hline
+\%c & Carácter & El valor al que se refiere este formato es inter- \\
+    & & pretedo como un solo carácter. Los espacios, \\
+    & & retornos de carro y cambios de lı́nea también \\ 
+    & & son interpretados como caracteres, por lo que \\ 
+    & & puede existir un conflicto de lectura al mezclar\\ 
+    & & la lectura de números y caracteres.\\ \hline
+\%s & Cadena de caracteres & El valor al que se refiere este formato es in- \\
+    & & terpretedo como una cadena de caracteres. Se \\
+    & & considera que los espacios, tabuladores y cam- \\ 
+    & & bios de lı́nea son separadores de cadenas, por \\
+    & & lo que si se quiere leer una cadena con espacios. \\ \hline
+\%f & Número de punto flotante (float) & El valor al que se refiere este formato es inter- \\
+    & & pretado como un número de punto flotante del \\ 
+    & & tipo básico float. Para el caso de la escritura, \\ 
+    & & se representa al número con punto decimal y \\
+    & & varios decmiales. \\ \hline
+\%F & Número de punto flotante (float) & Otra forma de representar \%f. \\ \hline
+\%e & Número de punto flotante (float) & El valor al que se refiere este formato es inter- \\ 
+    & & pretado como un número de punto flotante del \\ 
+    & & tipo básico float. Para el caso de la escritura, \\ 
+    & & se representa al número en noteción cientı́fica. \\ \hline
+\%E & Número de punto flotante (float) & Otra forma de representar \%e. \\ \hline
+\%g & Número de punto flotante (float) & El valor al que se refiere este formato es in- \\
+    & & terpretado como un número de punto flotante \\
+    & & del tipo básico float. Para el caso de la es- \\ 
+    & & critura, se representa al número como \%f o \%e \\ 
+    & & dependiendo del valor del número. \\ \hline
+\%G & Número de punto flotante (float) & Otra forma de representar \%g. \\ \hline
+\%\% & Sı́mbolo \% & En caso de que se quiera considerar el mero \\ 
+    & & sı́mbolo \% junto con otras letras que se inter- \\ 
+    & & pretarı́a la indicación de un formato. \\ \hline
+\end{tabular}
+\\
+\caption{Formatos de entrada y Salida en C.}
+\end{table}
+\pagebreak 
+
+\section{El uso del lenguaje Java.}
+Java es el leguaje más importante de Internet. Más aún, es el lenguaje universal de los programadores Web en todo el mundo. Sólo unos cuantos lenguajes han cambiado de manera importante la esencia de la programación. En este selecto grupo, Java destaca debido a que su impacto fue rápido y de gran alcance. No resulta exagerado afirmar que el lanzamiento origina de Java 1.0 en 1995 por parte de Sun Microsystems cusó una revolución en la programación que transformó de manera radical Web y lo convirtó en un entorno enormemente interactivo. En este proceso, Java estableció un nuevo estándar en el diseño de los lenguajes para computadoras. \\ 
+
+\subsection{Palabras Reservadas en Java.}
+En el lenguaje de programación Java, una palabra clave es cualquiera de las 57 palabras reservadas que tienen un significado predefinido en el lenguaje; debido a esto, los programadores no pueden usar palabras clave como nombres para variables, métodos, clases o como cualquier otro identificador. De estas 57 palabras clave, 55 están en uso y 2 no están en uso. Debido a sus funciones especiales en el lenguaje, la mayoría de los entornos de desarrollo integrados para Java utilizan el resaltado de sintaxis para mostrar palabras clave en un color diferente para una fácil identificación.\\
+\\
+En este capítulo tenéis un listado de las palabras reservadas de Java orientado a objetos. Las palabras reservadas son identificadores, pero como su nombre indica, estas palabras están reservadas, y no se pueden usar como identificadores de usuario.
+ 
+\begin{table}[H]
+\centering
+\begin{tabular}{ c | c | c | c | c }
+	abstract & continue & for & new & switch \\ \hline
+          assert & default & do & double & else \\ \hline
+         boolean & enum & extends & final & finally \\ \hline
+           break & float & goto & if & implements \\ \hline 
+            byte & import & instanceof & int & interface \\ \hline
+            case & long & native & package & private \\ \hline
+           catch & protected & public & return & short \\ \hline 
+            char & static & strictfp & super & switch \\ \hline
+           class & synchronized & this & throw & throws \\ \hline
+           const & transient & try & void & volatile \\ \hline
+	   while & & & & \\ \hline 
+\end{tabular}
+\\
+\caption{Palabras Reservadas en Java.}
+\end{table}
+\pagebreak
+
+\subsection{Tipos de datos Básicos o Primitivos en Java.}
+Un dato siempre lleva asociado un tipo de dato, que determina el conjunto de valores que puede tomar. En Java toda la información que maneja un programa está representada por dos tipos principales de datos: Datos de tipo básico o primitivo. Referencias a objetos. Los tipos de datos básicos o primitivos no son objetos y se pueden utilizar directamente en un programa sin necesidad de crear objetos de este tipo. La biblioteca Java proporciona clases asociadas a estos tipos que proporcionan métodos que facilitan su manejo. Los tipos de datos primitivos que soporta Java son:
+
+\begin{table}[H]
+\centering
+\begin{tabular} { c | c | c | l | c | c }
+Tipo de dato & Representación & Tamaño (Bytes) & Rango de Valores & Valor por defecto & Clase Asociada \\  \hline
+byte & Entero con signo & 1 & -128 a 127 & 0 & Byte \\ \hline 
+short & Entero con signo  & 2 & -32768 a 32767& 0 & Short \\ \hline
+int & Entero con signo & 4 & -2147483648 & & \\
+    & & & a 2147483647 & 0 & Integer \\ \hline
+long & Entero con signo & 8 & -9223372036854... & 0 & Long \\
+     &   & & a 92233720368547... & & \\ \hline
+float & Coma flotante & 4 & ± 3.4X {10}^{-38}  a &  0.0 & Float \\
+      & de precisión simple  & & ± 3.4X{10}^{38}  &  &  \\ \hline
+double & Coma flotante & 8 &  ± 1.8X {10}^{-308}  a & 0.0 & Double  \\
+       & de precisión doble  & &  ± 1.8X {10}^{308}  & & \\ \hline
+char & Carácter Unicode & 2 & u0000 a uFFFF & u0000 & Character \\ \hline
+boolean & Dato lógico & - & true ó false & false & Boolean \\  \hline
+void & - & - & - & - & Void \\ \hline
+\end{tabular}
+\captin{Tipos de Datos en Java.}
+\end{table} 
+
+\subsection{Operadores en Java y su Precedencia y Prioridad.} Primeramente definamos lo que esuna expresión. Una expresión es una combinación de variables, operadores y llamadas de métodos construida de acuerdo a la sintaxis del lenguaje que devuelve un valor. El tipo de dato del valor regresado por una expresión depende de los elementos usados en la expresión. Ahora bien los operadores son símbolos especiales que por lo común se utilizan en expresiones. La tabla siguiente muestra los distintos tipos de operadores que utiliza Java.
+\begin{table}[H]
+\centering 
+	\begin{tabular}{ c | c | c }
+		& \textbf{Operadores Aritméticos} & \\ \hline
+		Operador & Significado & Ejemplo \\ \hline
+		+ & Suma & a + b \\ \hline
+		- & Resta & a - b \\ \hine
+		* & Multiplicación & a * b \\ \hline 
+		/ & División & a / b \\ \hline
+		\% & Módulo & a \% b \\ \hline
+\end{tabular} 
+\end{table}
+\\
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ c | c | c }
+		& \textbf{Operadores de Asignación.} & \\ \hline 
+		= & Asignación & a = b \\ \hline 
+		+= & Suma y asignación & a+=b (a=a+b) \\ \hline
+		-= & Resta y asignación & a-=b (a=a-b) \\ \hline 
+		*= & Multiplicación y asignación & a*=b (a=a*b) \\ \hline 
+		/= & División y asignación & a/b (a=a/b) \\ \hline 
+		\%= & Módulo y asignación & a\%b (a=a\%b) \\ \hline 
+\end{tabular}
+\end{table}
+\\
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ c | c | c }
+		& \textbf{Operadores Relacionales} & \\ \hline
+		== & Igualdad & a==b \\ \hline 	
+		!= & Distinto & a!=b \\ \hline 
+		< & Menor que & a<b \\ \hline
+		> & Mayor que & a>b \\ \hline
+		<= & Menor o igual que & a<=b \\ \hline
+		>= & Mayor o igual que & a >= b \\ \hline 
+\end{tabular}
+\end{table}
+\\
+ \begin{table}[H]
+	 \centering
+	 \begin{tabular}{ c | c | c }
+		 & \textbf{Operadores Especiales}& \\ \hline
+		++ & Incremento	& a++(postincremento) \\ 
+		   &            & ++a (preincremento) \\ \hline 
+		-- & Decremento & a-- (postdecremento) \\ 
+                   &            & --a (predecremento) \\ \hline
+	(tipo)expr & Cast & a(int)b \\ \hline 
+		 + & Concatenación de cadenas & a="cad1"+"cad2" \\ \hline 
+		.  & Acceso a variables y métodos & a = obj.var1 \\ \hline 
+		( )& Agrupación de expresiones & a=(a+b)*c \\ \hline
+
+	\end{tabular} 
+\end{table}
+\\
+\textbf{Precedencia y Asociatividad de Operadores.}
+\begin{table}[H]
+        \centering
+        \begin{tabular}{ c | c | c | c }
+
+Nivel & Operadores & Descripción & Asociatividad. \\ \hline
+1 & () [ ] -> . & Acceso a un elemento de un vector y paréntesis & Izquierdas. \\ \hline
+2 & + - ! \textasciitilde{}  & Signo (unario), negación lógica, negación bit a bit& \\
+  & * \& $++$ $--$ & ! es el NOT lógico y \textasciitilde{} es el complemento de bits: new se & \textbf{Derechas}. \\
+  & new (tipo)expr& utiiza para crear instancias de clases &  \\ \hline
+3 & * / \% & Producto, División y Módulo & Izquierdas. \\ \hline
+4 & + - & Suma y Resta & Izquierdas. \\ \hline
+5 & >> << & Desplazamientos & Izquierdas. \\ \hline
+6 & < <= >= > & Comparaciones de Superioridad e Inferioridad & Izquierdas. \\ \hline
+7 & == != & Comparaciones de igualdad & Izquierdas. \\ \hline
+8 & \& & Y(And) bit a bit (binario) & Izquierdas. \\ \hline
+9 & \textasciicircum{} & O-exclusivo (Exclusivo-Or)(binario) & Izquierdas. \\ \hline
+10 & | & O-(Or) bit a bit (binario) & Izquierdas. \\ \hline
+11 & \&\& & Y(And) Lógico & Izquierdas. \\ \hline
+12 & || & O-(Or) Lógico & Izquierdas. \\ \hline
+13 & ? : & Condicional &\textbf{Derechas}. \\ \hline
+14 & = += -= *= /= & Asignaciones & \textbf{Derechas} \\ \hline
+\end{tabular}
+\\
+\caption{Precedencia y Asociatividad de Operdores.}
+\end{table}
+
+\subsection{Formatos en Java para escibir en la salida estándar.}Para endender mejor esto, es ncecesario el concepto de mascarillas. Las mascarillas son especificadores de formato que indican el tipo de dato que se quiere mostrar. Usándolos dentro de una cadena se puede definir el formato completo de la cadena y la colocación de los datos dentro de la misma:
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ c | c } 
+            Mascarilla & Tipo de dato que representa \\ \hline
+		B, b   &  boolean \\ \hline
+                  H, h & cadena de caracteres en hexadecimal \\ \hline
+                  S, s & cadena de caracteres \\ \hline
+                  C, c & char \\ \hline
+                     d & entero \\ \hline
+                     o & valor numérico en octal \\ \hline 
+                  X, x & valor entero en hexadecimal \\ \hline
+                  E, e & real con notación científica \\ \hline
+                     f & coma flotante \\ \hline
+                  G, g & coma flotante \\ \hline
+                  A, a & coma flotante en hexadecimal \\ \hline
+                  T, t & formato de fecha y hora \\ \hline
+	\end{tabular} 
+	\caption{Formatos para escribir en la salida estándar} 
+\end{table}
+Las mascarillas hay que usarlas con el operador \% y tienen el siguiente formato:\\ 
+             \% [índice] [modificadores] [ancho] [numero-decimales] mascarilla
+
+
+\end{document}

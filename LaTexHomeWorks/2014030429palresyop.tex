@@ -1,0 +1,557 @@
+\documentclass[12pt, A4]{article}
+%\documentclass[12pt ]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+%\usepackage[letterpaper]{geometry} 
+\usepackage{graphicx}
+\usepackage[x11names,table]{xcolor}
+\usepackage[spanish, es-tabla]{babel}
+\usepackage{booktabs}
+\usepackage{longtable,multirow,booktabs}
+\renewcommand{\tablename}{Tabla}
+\usepackage{hyperref}
+\renewcommand{\refname}{Bibliograf\'ia}
+\documentclass[a4paper]{article}
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\title{Tarea 4: Palabras Reservadas y los Operadores, su Prioridad y Precedencia, en C y en Java.}
+\author{Instituto Politécnico Nacional\\
+        Escuela Superior de Física y Matemáticas. \\
+        \\
+        Programación II. \\ \\
+        Profesor: Luis Carlos Coronado García.\\
+        Alumno: Flores Rodríguez Jaziel David. \\
+  \small jazzesfm@gmail.com\\
+  \small Ciudad de México
+  \date{}
+}
+\begin{document} 
+\maketitle
+	\section{El lenguaje C}
+	{
+		\subsection{Palabras Reservadas}
+		{
+	Las palabras reservadas son identificadores predefinidos (tienen un significado especial). En todos los lenguajes de programación existe un conjunto de palabras reservadas las cuales están presentes en la siguiente tabla
+	\begin{longtable}[h]{p{3cm} p{10cm}}
+		
+		\hline
+		
+		\textbf{Palabra} & \textbf{Significado} \\
+		\hline\hline
+		\endfirsthead
+		
+		\hline
+		\textbf{Palabra} & \textbf{Significado} \\
+		\hline\hline
+		\endhead
+		
+		\multicolumn{2}{r}{Sigue en la siguiente pagina.}
+		\endfoot
+		
+		\endlastfoot
+		
+		
+		auto & Modificador de clase de almacenamiento. \\ 
+		\rowcolor{gray!20}break & Instrucción. \\
+		case & Instrucción. \\	
+	\rowcolor{gray!20}	char  & Especificador de tipo. \\	
+		const & Modificador de clase de almacenamiento. \\
+	\rowcolor{gray!20}	continue & Instrucción.\\
+		default  & Etiqueta. \\
+	\rowcolor{gray!20}	do & Instrucción. \\
+		double & Especificador de tipo.\\	
+	\rowcolor{gray!20}	else & Instrucción. \\
+		enum &  Especificador de tipo. \\
+	\rowcolor{gray!20}	extern &Especificador de almacenamiento. \\
+		float & Especificador de tipo. \\
+	\rowcolor{gray!20}	for & Instrucción. \\
+		goto & Instrucción. \\
+	\rowcolor{gray!20}	if &  Instrucción. \\
+		int  & Especificador de tipo. \\ 
+	\rowcolor{gray!20}	long & Especificador de tipo. \\
+		register & Especificador de clase de almacenamiento.\\
+	\rowcolor{gray!20}	return & Instrucción. \\
+		short & Especificador de tipo. \\
+	\rowcolor{gray!20}	signed & Especificador de tipo. \\
+		sizeof & Operador. \\
+	\rowcolor{gray!20}	static & Especificador de almacenamiento. \\
+		struct & Especificador de tipo. \\ 
+	\rowcolor{gray!20}	switch & Instrucción. \\
+		typedef &  Instrucción. \\
+	\rowcolor{gray!20}	union & Especificador de tipo. \\
+		unsigned & Especificador de tipo. \\
+	\rowcolor{gray!20}	void & Especificador de tipo. \\
+		volatile & Modificador de clase de almacenamiento. \\
+	\rowcolor{gray!20}	while & Instrucción. \\ \hline
+
+		\caption{Palabras reservadas en \textbf{C}}
+	\end{longtable}
+		Todas las palabras reservadas del lenguaje C
+	son con minúsculas. Este es sensitivo al uso
+	de mayúsculas y minúsculas. Así que int es
+	un tipo de dato y palabra reservada, pero INT
+	no.	
+		}
+	
+		\subsection{Operadores}
+		{
+			Los operadores son símbolos que indican como son manipulados los datos. Se pueden clasificar en los siguientes grupos: aritméticos, lógicos, relacionales, lógicos para manejo de bits, de asignación, operador ternario para expresiones condicionales y otros. Se presentan estos operadores en la siguientes tablas:		
+
+\begin{longtable}[h]{p{3cm} p{10cm}}
+	\centering
+	\hline
+	
+	\textbf{Operador} & \textbf{Operación} \\
+	\hline\hline
+	\endfirsthead
+	
+	\hline
+	\textbf{Operador} & \texbf{Operación}\\
+	\hline\hline
+	\endhead
+	
+	\multicolumn{2}{r}{Sigue en la siguiente pagina.}
+	\endfoot
+	
+	\endlastfoot
+					+ & Suma. Los operando pueden ser enteros o reales.\\
+				\rowcolor{gray!20}	- & Resta. Los operando pueden ser enteros o reales. \\
+					* & Multiplicaci\'on. Los operando pueden ser enteros o reales.\\
+				\rowcolor{gray!20}	/ & Divisi\'on. Los operando pueden ser enteros o reales.\\
+					\% & Residuo de la división (entera). Los operando tienen ser enteros.\\ \hline
+					\caption{Operadores aritméticos en \textbf{C}}
+		\end{longtable}
+			
+			
+\begin{longtable}[h]{p{3cm} p{10cm}}
+	\centering
+	\hline
+	
+	\textbf{Operador} & \textbf{Operación} \\
+	\hline\hline
+	\endfirsthead
+	
+	\hline
+	\texbf{Operador} & \textbf{Operación} \\
+	\hline\hline
+	\endhead
+	
+	\multicolumn{2}{r}{Sigue en la siguiente pagina.}
+	\endfoot
+	
+	\endlastfoot
+	\&\& & AND. Da como resultado el valor lógico 1 si ambos operandos son distintos de cero. Si uno de los dos es cero el resultado es el valor  lógico 0. Si el primer operando es igual a cero, el segundo operando no es evaluado.\\
+	\rowcolor{gray!20}	$\mid\mid$ & OR. El resultado es 0 si ambos son operandos son 0. Si uno de los operando tiene un valor distintos de 0, el resultado es 1. Si el primer operando es distinto de cero, el segundo operando no es evaluado.\\
+	! & NOT. El resultado es cero si el operando tiene un valor distinto de cero, y 1 en caso contrario.\\ \hline
+	\caption{Operadores lógicos en \textbf{C}}
+\end{longtable}			
+
+
+\begin{longtable}[h]{p{3cm} p{10cm}}
+	\centering
+	\hline
+	
+	\textbf{Operador} & \textbf{Operación} \\
+	\hline\hline
+	\endfirsthead
+	
+	\hline
+	\textbf{Operador} & \textbf{Operación} \\
+	\hline\hline
+	\endhead
+	
+	\multicolumn{2}{r}{Sigue en la siguiente pagina.}
+	\endfoot
+	
+	\endlastfoot
+	$<$ & Primer operando menor que el segundo. \\
+	\rowcolor{gray!20}$<=$ & Primer operando menor o igual que que el segundo.\\
+	$==$ & Primer operando  igual que que el segundo.\\
+\rowcolor{gray!20}	$>=$ & Primer operando mayor o igual que que el segundo.\\
+	$>$ & Primer operando mayor  que que el segundo.\\ 
+\rowcolor{gray!20}	$!=$ & Primer operando  distinto del segundo.\\ \hline
+	\caption{Operadores de relación en \textbf{C}}
+\end{longtable}	
+ Los operando pueden ser de tipo entero, real o puntero.\\
+ \textbf{{{\Large } Expresiones de Boole  }}\\
+ Una expresión de Boole da como resultado los valores lógicos 0 o 1. Los operadores que intervienen en una expresión de Boole pueden ser operadores lógicos y operadores de relación. 
+ 
+ \begin{longtable}[h]{p{3cm} p{10cm}}
+ 	\centering
+ 	\hline
+ 	
+	 \textbf{Operador} & \textbf{Operación} \\
+ 	\hline\hline
+ 	\endfirsthead
+ 	
+ 	\hline
+	 \textbf{Operador} & \textbf{Operación} \\
+ 	\hline\hline
+ 	\endhead
+ 	
+ 	\multicolumn{2}{r}{Sigue en la siguiente pagina.}
+ 	\endfoot
+ 	
+ 	\endlastfoot
+	\& & Operación AND a nivel de bits. \\
+\rowcolor{gray!20}	$\mid$ & Operación OR a nivel de bits. \\ 
+	$^{\wedge}$ &  Operación XOR a nivel de bits.\\
+\rowcolor{gray!20}	$<<$ & Desplazamiento a la izquierda.\\
+	 $>>$ &  Desplazamiento a la derecha.\\ \hline   
+ 	\caption{Operadores lógicos para manejo de bits.}
+ \end{longtable}	
+			Los operadores para este tipo de operaciones tienen que ser de tipo entero de 1 o 2 bytes, no pueden ser reales.\\
+			En las operaciones de desplazamiento el primer operando es desplazado tantas posiciones como indique el segundo.
+			
+			
+ 
+\begin{longtable}[h]{p{3cm} p{10cm}}
+	\centering
+	\hline
+	
+	\textbf{Operador} & \textbf{Operación} \\
+	\hline\hline
+	\endfirsthead
+	
+	\hline
+	\textbf{Operador} & \textbf{Operación} \\
+	\hline\hline
+	\endhead
+	
+	\multicolumn{2}{r}{Sigue en la siguiente pagina.}
+	\endfoot
+	
+	\endlastfoot
+	 + + & Incremento. \\
+\rowcolor{gray!20}	 -\hspace{0.1 cm} -& Decremento. \\
+	= & Asignación simple. \\
+\rowcolor{gray!20}	*= & Multiplicación más asignación. \\
+	/= & División más asignación. \\
+\rowcolor{gray!20}	\%= & Modulo más asignación. \\
+	+= & Suma más asignación.\\
+\rowcolor{gray!20}	-= & Resta más asignación.\\
+	$<<=$ & Desplazamiento a izquierda mas asignación. \\
+\rowcolor{gray!20}	$>>=$ & Desplazamiento a derecha mas asignación. \\
+	$\&=$ & Operación AND sobre bits más asignación. \\
+\rowcolor{gray!20}	= & Operación OR sobre bits más asignación. \\
+	$^{\wedge}$= & Operación XOR sobre bits más asignación. \\ \hline 
+	\caption{Operadores de asignación en \textbf{C}.}
+\end{longtable}
+ \textbf{{{\Large } Expresiones condicionales.  }}\\
+ \textbf{C} tiene un operador ternario (?:), que se utiliza en expresiones condicionales, las cuales tiene la forma
+ $$\mathrm{operando1 \hspace{0.1 cm}?\hspace{0.1 cm} operando2\hspace{0.1 cm} :\hspace{0.1 cm} operando3}$$
+ La expresión \textbf{operando1} debe ser de tipo entero, real o puntero. La evaluación se realiza de la siguiente forma:
+ \begin{itemize}
+ 	\item Si el resultado de la expresión operando1 es distinta de cero, el resultado de la expresión condicional es operando2.
+ 	\item Si el resultado de la evaluación de operando1 es cerp, el resultado de la expresión condicional es operando3. 
+ \end{itemize}
+ \textbf{{{\Large } Otros operandos  }}
+ \begin{itemize}
+ 	\item \textbf{Operador de indirección}: Este operador accede a un valor indirectamente a través de un puntero. El resultado es el valor diseccionado por el operando. 
+ 	\item \textbf{Operador de dirección}: Este operador da la dirección de su operando. Este operador no se puede aplicar a un campo de bits perteneciente a una estructura o a un declarado con el especificador register.
+ 	\item \textbf{Operador sizeof (tamaño de)}: Este operador da como resultado un entero indicando el tamaño en bytes del identificador o tipo especificado. La sintaxis es: $$\mathrm{sizeof(expresi\acute{o}n)}$$ donde \textbf{expresión} es un identificador o un tipo básico.
+ \end{itemize}
+
+
+ \textbf{{{\Large } Otros operandos  }}\\
+ La tabla  siguiente, resume las reglas de prioridad y asociatividad de todos los operadores. Los operadores escritos sobre una misma linea tienen la misma prioridad. Las lineas se han colocado de mayor a menor prioridad.
+
+
+\begin{longtable}[h]{p{8cm} p{5cm}}
+	\centering
+	\hline
+	
+	\textbf{Operador} & \textbf{Operación} \\
+	\hline\hline
+	\endfirsthead
+	
+	\hline
+	\textbf{Operador} & \textbf{Asociatividad} \\
+	\hline\hline
+	\endhead
+	
+	\multicolumn{2}{r}{Sigue en la siguiente pagina.}
+	\endfoot
+	
+	\endlastfoot
+	 ( ) [ ] . $-->$ & Izquierda a derecha. \\
+	\rowcolor{gray!20} \_ - ! * \& ++ -\hspace{0.1 cm}- sizeof (tipo) & Derecha a izquierda. \\
+	* / \%  & Izquierda a derecha. \\
+	\rowcolor{gray!20} + -- & Izquierda a derecha. \\
+	 $<<$ $>>$ & Izquierda a derecha. \\
+	\rowcolor{gray!20} $<$ $<=$ $>$ $>=$ & Izquierda a derecha. \\
+	 == != & Izquierda a derecha. \\
+	\rowcolor{gray!20} \& & Izquierda a derecha. \\
+	 $^{\wedge}$ & Izquierda a derecha. \\
+	\rowcolor{gray!20} $\mid$ & Izquierda a derecha. \\
+	 \&\& & Izquierda a derecha. \\
+	\rowcolor{gray!20} $\mid\mid$ & Izquierda a derecha. \\
+	 ?: & Derecha a izquierda. \\
+	\rowcolor{gray!20} = *= /=  += -= $<==$ $>==$ \&= $\mid =$ $^{\wedge}=$ & Derecha a izquierda. \\
+	 , & Izquierda a derecha.  \\  \hline
+	\caption{Prioridad y orden de evaluación en \textbf{C}.}
+\end{longtable}
+
+
+		}
+		
+\newpage
+	\section{El lenguaje Java}
+	{
+		\subsection{Palabras Reservadas}
+		{
+			En un programa en \textbf{Java} es preciso asignar un identificador o nombre a cada elemento que se defina. un identificador se construye como una sucesi\'on de caracteres alfanum\'ericos que inicia con letra o guion bajo (\_), los siguientes son ejemplos de identificadores  
+			\begin{itemize}
+				\item cuadrado
+				\item mes
+				\item x23
+			\end{itemize}
+			Ademas en \textbf{Java}, son distintos los identificadores \textbf{edad} y \textbf{Edad} debido a la distinci\'on que se hace entre may\'usculas y min\'usculas.\\
+			Es recomendable que se elijan nombres adecuados para los identificadores pues de esta manera ayudan a que el c\'odigo sea comprensible para cualquier programador.\\
+			Un identificador puede estar formado por varias palabras, si es el caso, no se deben incluir espacios en blanco y a partir de la segunda palabra cada una empieza con may\'uscula. Por ejemplo
+			\begin{itemize}
+				\item promedioDeProgramacion
+				\item velocidadDeCaida
+				\item dineroRecibido
+			\end{itemize}
+		Por convenci\'on los \'unicos identificadores que empiezan con may\'uscula son los nombres de las clases  y de la interfaces.\\Existe un  conjunto de palabras que no pueden ser usadas como identificadores por que tienen un significado especial para \textbf{Java}, cada una de \'estas se denomina \textbf{palabra reservada}.\\ El conjunto de palabras reservadas (y su significado) se muestra en la siguiente tabla   
+		\begin{longtable}[h]{p{3cm} p{10cm}}
+		\centering
+		\hline
+		
+			\textbf{Palabra} & \textbf{Significado} \\
+		\hline\hline
+		\endfirsthead
+		
+		\hline
+			\textbf{Palabra} & \textbf{Significado} \\
+		\hline\hline
+		\endhead
+		
+		\multicolumn{2}{r}{Sigue en la siguiente pagina.}
+		\endfoot
+		
+		\endlastfoot
+		
+				\rowcolor{gray!20}	abstract	& Se utiliza para definir clases y métodos abstractos.\\
+					boolean	& Tipo de dato primitivo booleano (lógico), que puede ser true o false.\\ 
+					\rowcolor{gray!20}	break	& Instrucción de salto que interrumpe (rompe) la ejecución de un bucle o de una instrucción de control alternativa múltiple (switch).\\
+					byte	&  Tipo de dato primitivo n\'umero entero (integer) de 8 bits.\\
+					\rowcolor{gray!20}	case	& Caso de una instrucción de control alternativa múltiple (switch).\\
+					catch	& Cl\'ausula de un bloque try donde se especifica una excepción.\\
+					\rowcolor{gray!20}	char	& Tipo de dato primitivo carácter (valor Unicode) de 16 bits.\\
+					class	& Sirve para definir una clase.\\
+					\rowcolor{gray!20}	continue & Instrucción de salto que interrumpe (rompe) la ejecución de la iteración de un bucle. Pero, permitiendo continuar al bucle seguir realizando otras iteraciones.\\
+					default	& Caso por defecto de una instrucción de control alternativa múltiple (switch).\\
+						\rowcolor{gray!20} do	& Se usa en la sintaxis de un bucle hacer mientras (do while).\\
+					double	& Tipo de dato primitivo número real en coma flotante con precisión.\\
+					\rowcolor{gray!20}	else	& Si no, en una instrucción de control alternativa doble (if else).\\
+					extends	& Cláusula que permite indicar la clase padre de una clase.\\
+					\rowcolor{gray!20}	false	&   Valor booleano para falso.\\
+					final	& Permite indicar que una variable no se puede modificar, un método no se puede redefinir o de una clase no se puede heredar.\\
+						\rowcolor{gray!20} finally		& ausula que permite especificar un bloque de código que siempre se ejecutará, se produzca o no una excepción en un bloque try.\\
+					float	& Tipo de dato primitivo número real en coma flotante con precisión simple (single-precision floating-point) de 32 bits.\\
+					\rowcolor{gray!20}	for	& Instrucción de control repetitiva para.\\
+					if	& Se emplea para escribir instrucciones de control alternativas simples (if) o dobles (if else).\\
+					\rowcolor{gray!20}	implements	& Sirve para definir la o las interfaces de una clase.\\
+					import	& Permite importar un paquete (package).\\
+					\rowcolor{gray!20}	instanceof	& Operador que permite saber si un objeto es una instancia de una clase concreta.\\
+					int	& Tipo de dato primitivo número entero (integer) de 32 bits.\\
+					\rowcolor{gray!20}	interface	& Se utiliza para declarar una interfaz.\\
+					long	& Tipo de dato primitivo número entero (integer) de 64 bits.\\
+					\rowcolor{gray!20}	main	& Es un est\'andar utilizado por la JVM para iniciar la ejecuci\'on de  cualquier programa en \textbf{Java}.\\
+					native	& Modificador que se utiliza para indicar que un método está implementado en un lenguaje de programación (distinto a Java) dependiente de la plataforma.\\
+					\rowcolor{gray!20}	new	& Operador que se utiliza para crear un objeto nuevo de una clase.\\
+					null & Es un valor especial, que puede asignar a cualquier tipo de referencia y se puede castear null a cualquier tipo.\\
+					\rowcolor{gray!20}	package	& Agrupa a un conjunto de clases.\\
+					private	& Modificador de acceso para indicar que un elemento es accesible únicamente desde la clase donde se ha definido.\\
+					\rowcolor{gray!20}	protected	& Modificador de acceso para indicar que un elemento es accesible desde la clase donde se ha definido, subclases de ella y otras clases del mismo paquete (package).\\
+					public	& Modificador de acceso para indicar que un elemento es accesible desde cualquier clase.\\
+					\rowcolor{gray!20}	return	&  usa para indicar el valor de retorno de un método.\\
+					short	& Tipo de dato primitivo número entero (integer) de 16 bits.\\
+					\rowcolor{gray!20}	static	& Permite especificar que un elemento es único en una clase, no pudiendo existir instancias de esa clase que contengan a dicho elemento.\\
+					super	& Permite invocar a un método o constructor de la superclase.\\
+					\rowcolor{gray!20} switch	& Instrucción de control alternativa múltiple.\\
+					synchronized	& Modificador que se utiliza para indicar que un método o bloque de código es atómico.\\
+					\rowcolor{gray!20}	this	& Se utiliza para referenciar al objeto actual, así como para invocar a un constructor de la clase a la que pertenece dicho objeto.\\
+					throw	& Permite lanzar una excepción.\\
+					\rowcolor{gray!20}	throws	& Sirve para indicar las excepciones que un método puede lanzar.\\
+					transient		& Sirve para especificar que un atributo no sea persistente.\\
+					\rowcolor{gray!20}	true	&  Permite especificar un bloque de código donde se quieren atrapar.\\
+					try	&  Permite especificar un bloque de código donde se quieren atrapar excepciones.\\
+					\rowcolor{gray!20}	void	& Tipo de dato vacío (sin valor).\\
+					volatile	& Modificador que se usa para indicar que el valor de un atributo que está siendo utilizado por varios hilos (threads) esté sincronizado.\\
+						\rowcolor{gray!20} while	& Se usa para escribir bucles mientras (while) y bucles hacer mientras (do while).\\ \hline
+	\caption{Palabras reservadas en \textbf{Java}}
+	\end{longtable}
+		}
+	\vspace{-0.8 cm}
+		
+		\subsection{Operadores}
+		{
+			
+			Debido a que los datos de tipo primitivo no son objetos  no existen métodos asociados a ellos; la única forma de trabajar con estos datos es mediante los operadores que existen para ellos. Los operadores básicos del lenguaje Java son:
+			\begin{itemize}
+				\item \textbf{Operadores de asignaci\'on }
+				\item \textbf{Operadores aritméticos }
+				\item \textbf{Operadores de asignación compuesto }
+				\item \textbf{Operadores de relación}
+				\item \textbf{Operadores lógicos }
+				\item \textbf{Operador + para cadenas }
+			\end{itemize}
+		 \textbf{{{\Large }Operadores de asignaci\'on }}\\El operador de asignación se utiliza para modificar el valor de cualquier variable, este operador se expresa con el signo igual (=). Este se puede utilizar con cualquiera de los tipos de datos.\\Del lado izquierdo del operador de asignación debe estar el identificador de una variable o de una constante y del lado derecho ua expresión. EL resultado de la evaluación de la expresión es el valor que se asigna al dato especificado en el lado izquierdo del operador de asignación.\\
+		\textbf{{{\Large } Operadores aritméticos  }}\\  Con los datos numéricos es posible realizar operaciones aritméticas básicas utilizando operadores representados en la siguiente tabla. Estos operadores requieren de dos operando para trabajar, de ahí que se diga que son operadores binarios.
+			\begin{table}[h!]
+			\centering
+			\rowcolors{1}{}{gray!20}
+			\begin{tabular}{c | c}
+			\textbf{Operador} & \textbf{Descripción} \\
+				+ & Suma.\\
+				- & Resta.\\
+				* & Multiplicaci\'on.\\
+			/ & Divisi\'on.\\
+				\% & Residuo de la división.\\ \hline
+			\end{tabular}
+			\caption{Operadores aritméticos en \textbf{Java}}
+		\end{table}
+	\\Adem\'as de los operadores binarios se tienen los operadores unarios los cuales están presentados en la siguiente tabla:
+		\begin{table}[h!]
+			\vspace{-0.3cm}
+		\centering
+		\rowcolors{1}{}{gray!20}
+		\begin{tabular}{c | c}
+			\textbf{Operador} & \textbf{Descripción} \\
+			+ & Más unario.\\
+			- & Menos unario.\\
+			++ & Autoincremento.\\
+			-\hspace{0.1cm}- & Autodecremento.\\  \hline
+		\end{tabular}
+		\caption{Operadores unarios en \textbf{Java}}
+	\end{table}
+ \\El efecto de la aplicación del operador de menos unario (o negación) a un operando es cambiar el signo del valor resultante.\\El operador unario + no produce ningún cambio en el signo del valor resultante así que rara vez se usa.\\
+El operador de autoincremento se utiliza para incrementar en una unidad el valor de la variable a la que se aplica. Es posible colocar el operador de autoincremento antes o después de la variable que se desea incrementar. Si aperase del lado derecho de la variable se conoce como post-incremento, en otro caso se conoce como   pre-incremento. El operador de autodecremento opera de manera similar que el de autoincremento pero en vez de aumentar, este disminuye.	\\
+\textbf{{{\Large } Operadores de asignación compuesto }}\\ Frecuentemente se desea actualizar el valor de una variable a partir del valor que ya posee, en estos casos en el lado izquierdo y en derecho de la asignación se tiene la misma variables; por ejemplo, la expresión a = a + 5; suma cinco unidades al valor que tenga la variable a. Es posible abreviar estas expresiones (variable = variable operador expresión) utilizando el operador de asignación compuesto como sigue: variable operador = expresión. Por ejemplo b/= 45; equivale a b= b/45; \\
+\textbf{{{\Large } Operadores de relación}}\\ Los operadores de relación trabajan con los datos de cualquier tipo y devuelven como resultado un valor Booleano (true, false), de acuerdo con la relación de orden entre los valores comparados. Los operadores de relación se presentan en la siguiente tabla.
+
+
+
+
+\begin{longtable}[h]{p{3cm} p{10cm}}
+	\hline
+	
+	\textbf{ Operador} & \textbf{Significado} \\
+	\hline\hline
+	\endfirsthead
+	
+	\hline
+	\textbf{Operador} & \textbf{ Significad}o \\
+	\hline\hline
+	\endhead
+	
+	\multicolumn{2}{r}{Sigue en la siguiente pagina.}
+	\endfoot
+	
+	\endlastfoot
+	
+	$<$ & Menor que.\\
+	$<=$ & Menor o igual que.\\
+	$==$ & Igual que.\\
+	$>=$ & Mayor o igual que.\\
+	$>$ & Mayor que.\\ 
+	$!=$ & Diferente de.\\ \hline
+		\caption{Operadores de relación en \textbf{Java}}	
+\end{longtable}
+
+Se debe ser cuidadoso al hacer una comparación de igualdad o desigualdad con números reales por el aspecto de precisión de la representación de estos en la computadora.\\
+\textbf{{{\Large } Operadores lógicos  }}\\ Los operadores lógicos trabajan con datos o expresiones Booleanas y devuelven un valor Booleano (true, false). Los operadores lógicos se presentan en la siguiente tabla, los primeros dos son  operadores binarios y el otro es un operador unario.
+
+\begin{table}[h!]
+	\centering
+	\rowcolors{1}{}{gray!20}
+	\begin{tabular}{c | c}
+		\textbf{Operador} & \textbf{Descripci\'on}\\ \hline
+	\&\&& Conjunción. \\
+  $\mid\mid$ & Disyunción.\\
+!	& Negación. \\ \hline
+	\end{tabular}
+	\caption{Operadores lógicos en \textbf{Java}}
+\end{table}
+El resultado de la aplicación de los operadores lógicos se presentan en las llamadas tablas de verdad que contienen todas las posibles combinaciones de valores involucrados  en una operación lógica, las tablas de verdad son las siguientes 
+
+
+\begin{table}[h!]
+	\centering
+	\rowcolors{1}{}{gray!20}
+	\begin{tabular}{ c | c | c }
+		 \&\& & true & false\\ \hline
+		true& true & false\\
+		false & false & false\\ \hline
+	\end{tabular}
+\hspace{1 cm}
+	\begin{tabular}{ccc}
+		 $\mid\mid$ & true & false\\ \hline
+		true& true & true \\
+		false & true & false\\ \hline
+	\end{tabular}
+\hspace{1 cm}
+	\begin{tabular}{cc}
+			\rowcolor{LightBlue2}! &  \\ \hline
+			false & true\\
+			true & false \\ \hline
+	\end{tabular}
+	\caption{Tablas de verdad.}
+\end{table}
+Para determinar el resultado de una expresión lógica o condicional no siempre es necesario evaluar todos los operandos de ésta, en cuando se tiene certeza del resultado se suspende la evaluación del otro operando.\\
+\textbf{{{\Large } Operadores + para cadenas }}\\
+No existe un tipo de datos primitivo para manejo de cadenas de caracteres, sin embargo es común trabajar con cadenas. Para concatenar cadenas de caracteres, es decir, pegar una después de la otra, se puede utilizar el operador binario de suma +. Por ejemplo; ''Anita ''+''lava''+''la ''+''tina'', produce 
+''Anita lava la tina''.\\
+Cuando se evalúan expresiones sencillas como a + b + c, no existe duda de cual será el resultado obtenido. Sin embargo, cuando se mezclan operadores las cosas se pueden complicar  pues el resultado puede depender del orden en que se realicen las operaciones, situación totalmente inaceptable debido a que se espera que el resultado de una expresión siempre sea el mismo.\\ En la siguiente tabla se presentan los operadores de mayor a menos precedencia. En una expresión se realizan primero las operaciones que tienen mayor prioridad, es decir, las que estén más arriba en la tabla.
+
+\begin{longtable}[h]{p{3cm} p{8cm} p{1cm}}
+	
+	\hline
+	
+	\textbf{Operador} & \textbf{Descripción & Asoc} \\
+	\hline\hline
+	\endfirsthead
+	
+	\hline
+	\textbf{Operador} & \textbf{Descripción & Asoc} \\
+	\hline\hline
+	\endhead
+	
+	\multicolumn{2}{r}{Sigue en la siguiente pagina.}
+	\endfoot
+	
+	\endlastfoot
+
+\rowcolor{gray!20}	( ) [ ] .	& Paréntesis y punto  & I \\
+	++ --	& Incremento y decremento (Post)  & I \\
+\rowcolor{gray!20}	++ --	&  Incremento y decremento (Pre)  & D \\
+	!	&  Negación & D \\
+\rowcolor{gray!20}	- +	&  Menos y más unarios  & D \\
+	new	& Operador para crear objetos  & D \\
+\rowcolor{gray!20}	(\emph{tipo})	& Conversión explicita de tipo  & D \\
+	* / \%	& Multiplicación, división y residuo  & I \\
+\rowcolor{gray!20}	+ -	& Suma y resta  & I \\
+	instanceof	$<$, $<=$,$>$, $>=$ & Operadores de relación  & I \\
+\rowcolor{gray!20}	$==$ $!=$	& Operadores de igualdad  & I \\
+	\&\&	& Conjunción  & I \\
+\rowcolor{gray!20}	$\mid\mid$	& Disyunción  & I \\
+	?:	& Operador condicional  & D \\
+\rowcolor{gray!20}	=, operador=	& Asignación  & D \\ \hline
+		\caption{Precedencia de operadores.}
+\end{longtable}
+I, D en la tabla anterior indican Izquierda y Derecha respectivamente.
+		}
+\end{document}

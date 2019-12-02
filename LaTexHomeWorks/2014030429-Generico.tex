@@ -1,0 +1,58 @@
+\documentclass[12pt ]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[x11names,table]{xcolor}
+\usepackage[spanish, es-tabla]{babel}
+\usepackage{booktabs}
+\usepackage{longtable,multirow,booktabs}
+\renewcommand{\tablename}{Tabla}
+\usepackage{hyperref}
+\renewcommand{\refname}{Bibliograf\'ia}
+\usepackage[spanish]{babel}       
+\usepackage[letterpaper]{geometry} 
+\author{Jaziel David Flores Rodríguez.}       
+\date{\today} 
+\title{Clase Object \& Variables de tipo Void *.} 
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+        Este trabajo se expone una breve descripción de la clase Object en Java y variables del tipo void * en C así como del manejo de información en ambos casos.
+\end{abstract}
+\section{Clase Object}
+
+La clase Object, es la clase raíz de todo el árbol de la jerarquía de clases Java (se podría decir que es una superclase), y proporciona un cierto número de métodos de utilidad general que pueden utilizar todos los objetos. La lista completa se puede ver en la documentación del API de Java, solo por mencionar Object proporciona:
+\begin{itemize}
+        \item Un método por el que un objeto se puede comparar con otro objeto
+        \item Un método para convertir un objeto a una cadena
+         \item Un método para esperar a que ocurra una determinada condición
+        \item Un método para notificar a otros objetos que una condición ha cambiado
+        \item Un método para devolver la clase de un objeto
+\end{itemize}
+\pagebreak
+
+\section{Variables del tipo void *}
+Un puntero genérico, o también conocido como puntero void, es un puntero con características especiales definido en C.
+La forma de declarar un puntero void se muestra a continuación:
+\begin{center}
+        void * identificador
+\end{center}
+La característica principal de un puntero void es que puede apuntar a la dirección de cualquier tipo de dato, sin tener que hacer una conversión explícita del mismo.\\
+Cuando se define un puntero void (void *ptrVoid), la lógica nos puede llevar a pensar que la variable referenciadda por el puntero sería de tipo void, sin embargo eso es un error debido a que no existe en C el tipode dato void. No se puede escribir en un programa una sentencia como *ptrVoid = ..., la razón para esto es que como el puntero void puede apuntar a cualquier tipo de dato, el compilador no puede saber a que tipo de dato apuntrará cuando el programa se esté ejecutando. La forma de solucionar este problema es indicándole al puntero a qué tipo de variable está apuntando, mediante una operación ''cast".\\
+El segundo problema que se presenta es cuando queremos aplicar el álgebra de punteros a un puntero void. Si arr es un arreglo de enteros y ptInt es un puntero a entero, si ejecutamos la orden ptInt = arr; estaremos haciendo que el puntero apunte al primer elemento del arreglo. Si luego hacemos ptInt++; o ptInt= ptInt + 2; haremos que el puntero apunte al segundo o tercer elemento del arreglo respectivamente.\\
+
+Si por otro lado hacemos ptrVoid = arr;, esto es que el puntero void apunte al primer elemento del arreglo, se considerará un error si hacemos ptrVoid++; ó ptrVoid = ptvoid + 2;. Esto se debe a que, como se indicó en capítulos anteriores, cuando se le suma una cantidad a un puntero, el valor que se le suma no es cantidad misma, sino la cantidad multiplicada por el tamaño del tipo de datos al que apunta. En ese sentido, al sumarle una cantidad a un puntero void, el compilador tratará de sumarle la contidad multuiplicada por el tamaño del dato al que apunta, y eso no se puede hacer porque como el puntero puede apuntar a cualquier tipo de dato, el compilador no podrá predecir el tamaño de la variable referenciada en el momento de traducir el programa. Este problem se puede soluciona aplicándole una operación''cast" al puntero antes de sumarle la cantidad.\\
+
+Finalmente hay que indicar que los estándares actuales no permiten aplicar el operador ++ directamente a un puntero al que se le está aplicando una operación ''cast".
+\subsection{Arreglos de punteros genéricos}
+Un arreglo de punteros void es una estructura de datos muy versatil, la razón de esto se debe a que como cada elemento del arreglo es un puntero void, podemos hacer que cada uno de ellos apunte a un tipo de dato diferente, por lo tanto habremos construído con ese arreglo una estructura de datos similar a un registro.
+\end{document}
+
+\end{document}
+

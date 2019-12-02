@@ -1,0 +1,305 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%INFORMACIÓN AUXILIAR DE LEGUAJE C Y JAVA. 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Qué tipo de documento estamos por comenzar:
+\documentclass[a4paper]{article}
+% Esto es para que el LaTeX sepa que el texto está en español:
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+% Esto es para poder escribir acentos directamente:
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%% Asigna un tamaño a la hoja y los márgenes
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+%% Paquetes de la AMS
+\usepackage{amsmath, amsthm, amsfonts}
+%% Para añadir archivos con extensión pdf, jpg, png or tif
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+%% Primero escribimos el título
+\title{Tarea 2: Sintaxis Básica de los Lenguajes de Programación C y Java.}
+\author{Instituto Politécnico Nacional\\
+        Escuela Superior de Física y Matemáticas. \\
+        \\
+        Programación II. \\ \\
+        Profesor: Luis Carlos Coronado García.\\
+        Alumno: Flores Rodríguez Jaziel David. \\
+  \small jazzesfm@gmail.com\\
+  \small Ciudad de México
+  \date{}
+}
+
+\begin{document}
+%% Hay que decirle que incluya el título en el documento
+\maketitle
+%% Aquí podemos añadir un resumen del trabajo (o del artículo en su caso) 
+\begin{abstract}
+Este documento pretende ser una guia rápida sobre la documentación de consulta para cualquier lector sobre la sintaxis básica estos dos lenguajes, inclusive ser una guia para mí mismo que ahora estoy escribiendo esto, además de ser una buena práctica del uso de LaTex en Linux usando VIM y algunos plugins para la terminal de Linux en el compilado de este. 
+\end{abstract}
+ 
+\section{Declaración de tipos de Datos Fundaentales.}
+Un dato dentro de un programa se caracteriza por llevar asociado un identicador, un tipo y
+un valor. Identicador: Nombre para referenciar al dato dentro del programa. El tipo de un dato determina el rango de valores que puede tomar el dato y su ocupación en memoria durante la ejecución del programa. Valor: será un elemento determinado dentro del rango de valores permitidos por el tipo de dato denido. Hay dos clases de tipos de datos: tipos fundamentales y tipos derivados. Algunos ejemplos de datos son: la edad, el saldo de una cuenta bancaria, el nombre de una persona, la letra del piso de una dirección, etc.\\ 
+
+\begin{table}[H]
+\cetering
+
+	\begin{tabular}{ c | c | c }
+Tipo de Dato & Palabra reservada & Ejemplo \\ \hline
+Entero &  int &  int numero = 1; \\ \hline
+Real & foat & foat numero 12.44; \\ \hline
+Carácter & char & char letra = 'a'\\ \hline
+Real doble precisión & doube double & reald =23.3432; \\ \hline
+Entero Largo & long & long entlarg = 2323; \\ \hline
+Cadena de carácter & char & char palabra[10] = HOLA; \\ \hline		
+Vacío & void &  void main() \\ \hline
+Boleano & boolean & boolean primitive \\ \hline
+Cadena de Caracteres & String & String nombreCurso = "Iniciación a Java"; \\ \hline
+Arrelo & Array o bien [] & tipo nombre-array[]; \\ \hline 
+
+	\end{tabular} 
+\caption{Declaración y uso de Tipos de Datos Fundamentales.}
+\end{table}
+
+El tipo representado por void puede signicar dos cosas distintas, según su utilización. Puede signicar nada, o sea, si una función devuelve un valor de tipo void no devuelve ningún resultado; o puede signicar cualquier cosa, como puede ser un puntero a void (un puntero genérico a cualquier tipo de dato) A excepción del tipo void, los otros tipos fundamentales admiten variantes, estos serán acompañados por los palabras: \textbf{signed}, \textbf{unsigned}, \textbf{long},\textbf{short}. \\
+\\
+\\
+La palabra unsigned en realidad es un modificador aplicable a tipos enteros, aunque si no se especifica un tipo se supone int. El modificador es una palabra clave de C que indica que una variable, o función, no se comporta de la forma normal. Hay también un modificador signed, pero como los tipos son por defecto con signo casi no se utiliza. Las variables de coma flotante son siempre con signo y, en el caso en que el exponente sea positivo, puede obviarse el signo del mismo. La siguiente tabla muestra todas las combinaciones permitidas que se ajustan al estándar ANSI.
+
+\begin{table}[H]
+\centering
+	\begin{tabular}{ c | c | c } 
+Tipo de Dato & Palabra reservada & Ejemplo \\ \hline
+Entero Corto & short & short corto sc = 34; \\ \hline		
+Real Largo & long double & long double ld = 2342.332 \\ \hline
+Carcteres de enteros  positivos & unsigned char & unsigned char uc = 34; \\ \hline
+Caracteres de enteros cortos & signed short int & signed short int shi = -23; \\ \hline 
+Caracteres de enteros & signed char & signed char sc =-43; \\ \hline
+Entero Largo & long int &  long int entlarg lie = 2323;\\ \hline 
+Entero sin signo & unsigned int & unsigned int ui = 45; \\ \hline 
+Entero largo con signo & signed long int & signed long int sli = -32342; \\ \hline 
+Entero con signo & signed int & signed int si= -234;  \\ \hline
+Entero largo sin signo & unsigned long int & unsigned long int uli = 23324; \\ \hline 
+Entero corto & short int & short int sh = 34; \\ \hline 
+	\end{tabular} 
+	\caption{Declaración y uso Tipos de Datos derivados}
+\end{table}
+\\
+\section{Controles de Flujo: Condicionales}
+\textbf{if}. \textbf{Sintaxis: if (exp-entera)} sentencia o bloque de sentencias. \textbf{Significado}: \textbf{exp-entera} es una expresión que al evaluarse arroja un valor entero. El valor 0 (cero) se interpreta como falso y un valor distinto de 0 (cero) se interpreta como verdadero. Recordemos que una sentencia es una unidad mı́nima de ejecución para C y Java. La sentencia se delimita al final de ésta por ; (punto y coma). Un bloque de sentencias es una sucesión de sentencias en C y Java. El bloque se delimita al inicio por \{ y al final por \}. Por ejemplo: \\
+\begin{figure}[H]
+	\centering
+\textbf{if(exp-entera)}\\ 
+\textbf{\{} \\
+\textbf{sentencia 1;}\\
+\textbf{.}\\
+\textbf{.}\\
+\textbf{.}\\
+\textbf{sentencia n;}\\
+\textbf{\}}\\
+	\caption{\textbf{Sintaxis de control de flujo if.}}
+\end{figure} 
+
+\pagebreak
+
+
+\textbf{if-else}. \textbf{Sintaxis}: \textbf{if (exp-entera)}- Sentencia o bloque de sentencias. \textbf{else}- sentencia o bloque de sentencias. Es similar al anterior, por ejemplo: 
+\begin{figure}[H]
+        \centering
+\textbf{if(exp-entera)}\\
+\textbf{\{} \\
+\textbf{sentencia 1;}\\
+\textbf{.}\\
+\textbf{.}\\
+\textbf{.}\\
+\textbf{sentencia n;}\\
+\textbf{\}}\\
+\textbf{else} \\ 
+\textbf{\{} \\
+\textbf{sentencia n+1;}\\
+\textbf{.}\\
+\textbf{.}\\
+\textbf{sentencia m;}\\
+\textbf{\}}\\
+        \caption{\textbf{Sintaxis de control de flujo if-else.}}
+\end{figure}
+ \\
+
+\textbf{Switchcase.}Se utiliza para agilizar la toma de decisiones múltiples; trabaja de la misma manera que lo harían sucesivos if, if elsee: \\
+\begin{figure}[H]
+	 \centering
+\textbf{switch (exp-entera)}\\
+\textbf{\{}\\ 
+\textbf{case cte-entera}: una o más sentencias \\ 
+\textbf{break};\\
+\textbf{·} \\ 
+\textbf{·} \\ 
+\textbf{·} \\ 
+\textbf{default}:\\
+	una o más sentencias\\
+\textbf{\}}\\
+        \caption{\textbf{Sintaxis de control de flujo switchcase.}}
+\end{figure}
+
+\textbf{if-else-if (Java)} El siguiente nivel es hacer el else condicional añadiendo un if para que si no se cumple la primera condición (la del if principal) se evalue esta nueva condición de modo que se puede concatenar la cantidad de if else que se necesiten para cubrir todos los distintos escenarios que precisen ser tratados de una forma particular, siendo el ultimo else el que se ejecute cuando no se cumpla ninguna condición (el else es siempre opcional).\\
+
+\begin{figure}[H]
+\centering
+        \textbf{if}(exp-entera-1) \textbf{ \{ }\\
+        \textbf{sentencia 1;}\\
+	\textbf{ \} } \\
+        \textbf{else if}(exp-entera-2)
+        \textbf{ \{ }\\
+        \textbf{sencencia 1;}\\
+        \textbf{\}}\\ 
+        \textbf{else \{ }\\
+	\textbf{sentencia 3};\\
+	\textbf{\}}
+        \caption{\textbf{Sintaxis de control de flujo if-else-if.}}
+\end{figure} 
+\pagebreak
+
+\section{Controles de Flujo: Ciclos.}
+
+
+\textbf{for.} \textbf{Sintaxis}:\\
+
+\begin{figure}[H]
+\centering
+\textbf{for(inicialización; exp-entera; incremento)\{sentencia o bloque de sentencias.\}}\\
+\end{figure}
+
+\textbf{Significado: • inicialización sentencia} son  sentencias separadas por comas(,) que se utilizan para inicializar variables, ı́ndices, etc., que se utilizan dentro del ciclo. \\ 
+\textbf{• exp-entera}: es una expresión que al evaluarse arroja un valor entero. El valor 0 (cero) se interpreta como falso e indica que la ejecución del for ha terminado, mientras que un valor distinto de 0 (cero) se interpreta como verdadero e indica que el for debe continuar su ejecución.\\ 
+\textbf{• incremento sentencia o sentencias}, separadas por comas (,) que se utilizan para incrementar variables, ı́ndices, etc., que se
+utilizan dentro del ciclo. Después de este incremente se evalua la exp-entera para continuar o detener la ejecución del for.\\
+
+
+
+\textbf{while.} \texbf{Sintaxis}: \\ 
+
+\begin{figure}[H]
+\centering
+\textbf{while(exp-entera) \{sentencia o bloque de sentencias\}}\\  
+\end{figure}
+
+\textbf{Significado}:\texbf{• exp-entera}-es una expresión que al evaluarse arroja un valor entero. El valor 0 (cero) se interpreta como falso e indica que la ejecución del while ha terminado, mientras que un valor distinto de 0 (cero) se interpreta como verdadero e indica que el while debe continuar su ejecucción. \\
+
+\textbf{do-while} \texbf{Sintaxis}:
+
+\begin{figure}[H]
+	\centering
+\textbf{do \{sentencia o bloque de sentencias\} while(exp-entera);}
+\end{figure}
+
+\textbf{Significado: •exp-entera} es una expresión que al evaluarse arroja un valor entero. El valor 0 (cero) se interpreta como falso e indica que la ejecución del do-while ha terminado,
+mientras que un valor distinto de 0 (cero) se interpreta como verdadero e indica que el do-while debe continuar su ejecucción.\\ 
+
+\section{Tipos estucturados de Datos en C.}
+\textbf{Arreglos. Sintaxis}:
+
+\begin{figure}[H]
+\centering
+\textbf{tipo definido id variable[tamaño constante];}
+\textbf{= \{val 0 , val 1 , . . ., val n−1 \};}
+\textbf{tipo definido id variable[] = \{val 0 , val 1 , . . ., val n−1 \};}
+\end{figure} 
+
+\textbf{Significado}: tipo definido identificador de un definido previamente. \textbf{id variable} identificador válido que se utiliza para hacer referencia directa a la información almacenada en el arreglo. \textbf{tamaño constante} es una constante entera explı́cita o formada por macros que indica el número de bloques a utilizar. Cada bloque tiene un tamaño en bytes igual al tamaño del tipo en cuestión. \\ 
+\pagebreak 
+
+\textbf{Estruct. Sintaxis}:
+\begin{figure}[H]
+\centering
+	\textbf{struct id tipo \{}\\ 
+	\textbf{tipo definido 1 campo 1 ;} \\ 
+	\textbf{.}\\ 
+	\textbf{.}\\ 
+	\textbf{.}\\ 
+	\textbf{tipo definido n campo n ;}\\ 
+	\textbf{ \}; }\\
+\end{figure}
+
+\textbf{Significado}: \textbf{tipo definido i} identificador de un tipo definido previamente que se utiliza para el manejo de la información del campo i. El \textbf{campo i} identificador válido que se utiliza para acceder la información contenida en el campo i.\\ 
+\textbf{Declaración Variables. Sintaxis}:
+\begin{figure}[H]
+\centering
+	\textbf{mi tipo struct id var;}
+\end{figure}
+
+Significado: \textbf{mi tipo struct} es la declaración o definición de un tipo
+estructurado. \textbf{id var} es el identificador válido que se utiliza para denotar a la variable del tipo estructurado struct en cuestión.\\
+\\ \textbf{Definición del Tipo. Sintaxis:} 
+	\begin{figure}[H]
+		\centering
+	\textbf{mi tipo struct id var = \{campo 1 : val 1 , ..., campo n : val n \};}
+	\end{figure}
+
+\textbf{Significado: val i} valor de acuerdo al tipo definido previamente al que corresponde el \textbf{campo i} como se especifica en la definición del tipo \textbf{mi tipo struct}.\\ 
+\\
+\textbf{Union}.\\
+La declaración, definición de tipos y variables pertenecientes al tipo estructurado union es similar a su correspondiente con el tipo estructurado struct. La diferencia entre estos dos tipos estructurados radica en como se guarda la información y como se ven afectados sus campos. Con el tipo estructurado struct, la información se guarda en forma secuencial, es decir, la modificación en un campo no altera en lo más mı́nimo a los otros campos. Con el tipo estructurado union, la información se guarda desde una misma dirección de memoria, es decir, la modificación en un campo altera a todos los otros campos. 
+
+\section{La Descripción de Clases y Declaración de Objetos en Java.}
+Recordemos que los elementos principales de una clase son sus atributos (datos) y sus métodos (código para manipular los datos). Veamos la sintaxis de una clase simple, Publicacion que podríamos utilizar para almacenar los datos sobre nuestra colección bibliográfica
+
+\begin{figure}[H]
+	\centering
+	\textbf{class Publicacion\{ }\\
+	\textbf{public long idPublicacion;} \\ 
+	\textbf{pubic String titulo;} \\ 
+	\textbf{public String autor;} \\ 
+	\textbf{publicstatic siguienteid;} \textbf{\}}
+\end{figure}
+
+El nombre de la clase, Publicacion debe ser un identificador válido en Java y por convención, empieza por letra mayúscula. Una declaración de clase crea un nombre de tipo en Java. De esta forma las referencias a objetos Publicacion se pueden declarar con un simple:
+\begin{figure}[H]
+\centering
+	\textbf{Publicacion miLibro;}\\
+\end{figure}
+Las variables de una clase se llaman campos. La clase Publicacion tiene tres campos, idPublicacion que identifica de forma unívoca cada publicación, titulo que es el título de la publicación y autor que ha firmado la publicación. Podríamos definir un campo propietario.\\
+\\ 
+Con este campo indicaríamos el propietario del libro. Sería útil, si sólo vamos a almacenar nuestras publicaciones, que el valor de este campo lo compartan todas los objetos que podamos definir a partir de esta clase. Calificaríamos la declaración de este campo con la palabra reservada static:
+\begin{figure}[H]
+	\centering
+	\textbf{class Publicacion \{}\\
+	\textbf{public long id;}\\
+	\textbf{publicc String titulo;}\\
+	\textbf{public String autor;}\\
+	\textbf{public static String propietario = "Jaziel Flores";}
+	\textbf{\}}
+\end{figure}
+
+\textbf{Declarar y Crear un objeto en Java.}
+Un objeto es una instancia de una clase. En un programa el objeto se representa mediante una variable. Esta variable contiene la dirección de memoria del objeto. Cuando se dice que Java no tiene punteros estamos diciendo que Java no tiene punteros que podamos ver y manejar como tales en otros lenguajes como C/C++, pero debemos saber que todas las referencias a un objeto son de hecho punteros, es decir, son variables que contienen la dirección de memoria del objeto que representan. Para crear un objeto se deben realizar dos operaciones: \textbf{Declaración} y \textbf{Instanciación}.\\ 
+\\
+\textbf{Declaración de un Objeto.}
+En la declaración se crea la referencia al objeto, de forma similar a cómo se declara una variable de un tipo primitivo. La referencia se utiliza para manejar el objeto. La sintaxis general para declarar un obejto en Java es:
+
+\begin{figure}[H]
+	\centering	
+	\textbf{NombreClase referenciaObjeto;}
+\end{figure}
+
+Por ejemplo, para crear un objeto de la clase Persona creamos su referencia así: \texbf{Persona p;}
+\\
+La referencia tiene como misión almacenar la dirección de memoria del objeto. En este momento la referencia p almacena una dirección de memoria nula (null).\\
+
+Instanciación de un objeto Mediante la instanciación de un objeto se reserva un bloque de memoria para almacenar todos los atributos del objeto. \\
+
+\textbf{Instanciación de un Objeto.}
+Al instanciar un objeto solo se reserva memoria para sus atributos. No se guardan los métodos para cada objeto. Los métodos son los mismos y los comparten todos los objetos de la clase.
+La dirección de memoria donde se encuentra el objeto se asigna a la referencia. De forma general un objeto se instrancia en Java así:
+\begin{figure}[H]
+	\centering
+	\textbf{referenciaObjeto = new NombreClase();}
+\end{figure}
+new es el operador Java para crear objetos. Mediante new se asigna la memoria necesaria para ubicar el objeto y devuelve la dirección de memoria donde empieza el bloque asignado al objeto.
+
+\end{document}

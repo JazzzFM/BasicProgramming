@@ -1,0 +1,178 @@
+\documentclass[12pt, A4]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage[x11names,table]{xcolor}
+\usepackage[spanish, es-tabla]{babel}
+\usepackage{booktabs}
+\usepackage{longtable,multirow,booktabs}
+\renewcommand{\tablename}{Tabla}
+\usepackage{hyperref}
+\renewcommand{\refname}{Bibliograf\'ia}
+
+\usepackage[spanish]{babel}
+\usepackage[letterpaper]{geometry}
+\usepackage[utf8]{inputenc}
+\author{Jaziel David Flores Rodríguez.}
+\date{\today}
+
+\title{Grafos.} 
+\begin{document}
+	\maketitle
+
+\section{Introducción.}
+ Este documento contiene la descripción de grafo y su representación mediante su matriz de adyacencia; también se describe la forma de saber si un grafo tiene un recorrido euleriano y, de ser el caso, se indica  el recorrido euleriano.
+
+
+\section{Descripción de un grafo}
+Un grafo G agrupa entes físicos o conceptuales y las relaciones entre ellos. Un grafo está formado por un conjunto de vértices o nodos V , que representan a los entes, y un conjunto de arcos A ,
+que representan las relaciones entre vértices. Se representa con el par G = (V, A).\\
+Un arco o arista representa una relación entre dos nodos. Esta relación, al estar formada
+por dos nodos, se representa por (u, v) siendo u, v el par de nodos. El grafo es no dirigido si
+los arcos están formados por pares de nodos no ordenados, no apuntados; se representa con un
+segmento uniendo los nodos, u — v .\\
+Un grafo es dirigido, también denominado digrafo, si los pares de nodos que forman los arcos
+son ordenados; se representan con una flecha que indica la dirección de la relación, u $\rightarrow$ v.\\
+Dado el arco (u,v) de un grafo, se dice que los vértices u y v son adyacentes. Si el grafo es
+dirigido, el vértice u es adyacente a v , y v es adyacente de u . En resumen se tiene la siguiente definición:\\\\
+\textbf{Definición: } Un grafo permite modelar relaciones arbitrarias entre objetos. Un grafo G = (V,A) es un
+par formado por un conjunto de vértices o nodos, V , y un conjunto de arcos o aristas, A .
+Cada arco es el par (u,w) , siendo u, w dos vértices relacionados.\\Dado el arco (u,v) de un grafo, se dice que los vértices u y v son adyacentes. Si el grafo es
+dirigido, el vértice u es adyacente a v , y v es adyacente de u .
+\section{Representación de un grafo mediante su matriz de adyacencia}
+La característica mas importante de un grafo, que distingue a uno de otro, es el conjunto de
+pares de vértices que están relacionados, o que son adyacentes. Por ello, la forma más sencilla
+de representación es mediante una matriz, de tantas filas/columnas como nodos, que permite
+modelar fácilmente esa cualidad.\\
+Sea G = (V, A) un grafo de n nodos, siendo V = $\{v_{0},v_{1},\ldots,v_{n-1}\}$ el conjunto de
+nodos, y A = $\{(v_{i},v_{j})\}$ el conjunto de arcos. Los nodos están numerados consecutivamente de
+$0$ a $n-1$. La representación de los arcos se hace con una matriz A de $n \times n$ elementos, denominada matriz de adyacencia, tal que todo elemento $a_{ij}$ puede tomar los valores:
+
+\[a_{ij}=\left\{\begin{array}{lcc}
+1&\mbox{si hay un arco}& (v_{i},v_{j})\\\\
+0&\mbox{si no hay un arco}& (v_{i},v_{j})\\
+\end{array}\right.\]
+
+En los grafos no dirigidos la matriz de adyacencia siempre es simétrica ya que las relaciones entre
+vértices no son ordenadas: si $v_{i}$ está relacionado con $v_{j}$ , entonces $v_{j}$ está relacionado con $v_{i}$.\\
+Los grafos que modelan problemas en los que un arco tiene asociado una magnitud, un factor
+de peso, también se representan mediante una matriz de tantas filas/columnas como nodos. Ahora
+un elemento cualquiera, $a_{ij}$ representa el coste o factor de peso del arco $(v_{i} , v_{j} )$. Un arco que
+no existe se puede representar con un valor imposible, por ejemplo infinito; también, se puede
+representar con el valor $0$ , dependiendo de que $0$ no pueda ser un factor de peso significativo de
+un arco. A esta matriz también se la denomina matriz valorada.
+\section{Determinación si un grafo tiene un camino euleriano}
+Un camino euleriano es un camino que pasa por cada arista una y solo una vez. Un ciclo o un circuito euleriano es un camino que recorre cada arista exactamente una vez.  
+El siguiente programa determina si un grafo tiene recorrido euleriano y si es que lo tiene indica el recorrido. 
+\begin{lstlisting}
+import java.util.ArrayList;
+
+public class Grafo {
+
+private int vertices;
+private ArrayList<Integer>[] adj;
+
+Grafo(int NumeroDeVertices) {
+this.vertices = NumeroDeVertices;
+inicializar();
+}
+
+private void inicializar() {
+adj = new ArrayList[vertices];
+for (int i = 0; i < vertices; i++) {
+adj[i] = new ArrayList<>();
+}
+}
+
+private void agregarBorde(Integer u, Integer v) {
+adj[u].add(v);
+adj[v].add(u);
+}
+
+private void quitarBorde(Integer u, Integer v) {
+adj[u].remove(v);
+adj[v].remove(u);
+}
+
+private void imprimirCaminoEuler() {
+Integer u = 0;
+for (int i = 0; i < vertices; i++) {
+if (adj[i].size() % 2 == 1) {
+u = i;
+break;
+}
+}
+imprimir(u);
+System.out.println();
+}
+
+private void imprimir(Integer u) {
+for (int i = 0; i < adj[u].size(); i++) {
+Integer v = adj[u].get(i);
+if (esValidoSigBorde(u, v)) {
+System.out.print(u + "-" + v + " ");
+quitarBorde(u, v);
+imprimir(v);
+}
+}
+}
+
+private boolean esValidoSigBorde(Integer u, Integer v) {
+if (adj[u].size() == 1) {
+return true;
+}
+boolean[] esVisitado = new boolean[this.vertices];
+int contador1 = dfscontador(u, esVisitado);
+quitarBorde(u, v);
+esVisitado = new boolean[this.vertices];
+int contador2 = dfscontador(u, esVisitado);
+agregarBorde(u, v);
+return (contador1 > contador2) ? false : true;
+}
+
+private int dfscontador(Integer v, boolean[] esVisitado) {
+esVisitado[v] = true;
+int contador = 1;
+for (int adj : adj[v]) {
+if (!esVisitado[adj]) {
+contador = contador + dfscontador(adj, esVisitado);
+}
+}
+return contador;
+}
+
+public static void main(String[] args) {
+Grafo g1 = new Grafo(4);
+g1.agregarBorde(0, 1);
+g1.agregarBorde(0, 2);
+g1.agregarBorde(1, 2);
+g1.agregarBorde(2, 3);
+g1.imprimirCaminoEuler();
+
+Grafo g2 = new Grafo(3);
+g2.agregarBorde(0, 1);
+g2.agregarBorde(1, 2);
+g2.agregarBorde(2, 0);
+g2.imprimirCaminoEuler();
+
+Grafo g3 = new Grafo(5);
+g3.agregarBorde(1, 0);
+g3.agregarBorde(0, 2);
+g3.agregarBorde(2, 1);
+g3.agregarBorde(0, 3);
+g3.agregarBorde(3, 4);
+g3.agregarBorde(3, 2);
+g3.agregarBorde(3, 1);
+g3.agregarBorde(2, 4);
+g3.imprimirCaminoEuler();
+}
+
+}
+
+\end{lstlisting}
+
+\end{document}

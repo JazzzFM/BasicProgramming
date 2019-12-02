@@ -1,0 +1,8 @@
+Linux(Desde la terminal):
+
+gcc -g -Wall  grafOGLlinux.c koch.c logo.c misFuncs.c rama.c rama2.c -o firstOpenGlApp -lglut -lGLU -lGL -lm
+
+
+Windows (desde el cmd ejecutado como administrador): 
+
+gcc -g -Wall GraphVentana.c koch.c logo.c misFuncs.c rama.c rama2.c -o firstOpenGlApp -lglut -lGLU -lGL -lm
